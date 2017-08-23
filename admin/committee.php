@@ -9,7 +9,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลกองทุนหมู่บ้าน
+          ข้อมูลกรรมการกองทุนหมู่บ้าน
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -21,7 +21,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลกองทุนหมู่บ้าน
+              ข้อมูลกรรมการกองทุนหมู่บ้าน
             </li>
         </ol>
     </section>
@@ -34,13 +34,13 @@ require_once('include/_header.php');
                 <div class="portlet box default">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลกองทุนหมู่บ้าน
+                          ตารางข้อมูลกองกรรมการกองทุนหมู่บ้าน
                         </div>
                     </div>
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_fund_add.php"   class=" btn btn-custom">
+                              <a href="admin_committee_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -72,10 +72,12 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสกองทุน</th>
-                                        <th>ชื่อกองทุน</th>
-                                        <th>รายละเอียดกองทุน</th>
-                                        <th>จำนวนเงินเริ่มต้น</th>
+                                        <th>รหัสกรรมการ</th>
+                                        <th>คำนำหน้าชื่อ</th>
+                                        <th>ชื่อ-สกุล</th>
+                                        <th>ตำแหน่ง</th>
+                                        <th>ที่อยู่</th>
+                                        <th>เบอร์โทร</th>
                                         <th>แก้ไข</th>
                                         <th>ลบ</th>
 
@@ -83,28 +85,34 @@ require_once('include/_header.php');
                                 </thead>
                                 <tbody>
 						<?php
-							if (isset($_GET["id_fund"])) {
-								$id_fund = $_GET["id_fund"];
-								$sql = "delete from fund where id_fund='$id_fund'";
+							if (isset($_GET["id_committee"])) {
+								$id_committee = $_GET["id_committee"];
+								$sql = "delete from committee where id_committee='$id_committee'";
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from fund";
+							$sql = "select * from committee left join title
+		                  on committee.id_title = title.id_title
+			                left join position on committee.id_position = position.id_position";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
-								$id_fund = $row["id_fund"];
-								$fund_name = $row["fund_name"];
-								$fund_detail = $row["fund_detail"];
-								$fund_money = $row["fund_money"];
+								$id_committee = $row["id_committee"];
+                $title = $row["title"];
+								$com_name = $row["com_name"];
+								$name_position = $row["name_position"];
+								$com_address = $row["com_address"];
+                $com_tel = $row["com_tel"];
 
 								echo "<tr>
-										<td>$id_fund</td>
-										<td>$fund_name</td>
-										<td>$fund_detail</td>
-										<td>$fund_money</td>
+										<td>$id_committee</td>
+                    <td>$title</td>
+										<td>$com_name</td>
+										<td>$name_position</td>
+										<td>$com_address</td>
+                    <td>$com_tel</td>
 
-										<td><a href='admin_fund_edit.php?id_fund=$id_fund'>แก่ไข้</a></td>
-										<td><a href='funds.php?id_fund=$id_fund' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
+										<td><a href='admin_committee_edit.php?id_committee=$id_committee'>แก่ไข้</a></td>
+										<td><a href='committee.php?id_committee=$id_committee' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
 									</tr>";
 							}
 						?>
