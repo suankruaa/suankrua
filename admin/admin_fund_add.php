@@ -60,7 +60,11 @@ if (isset($_POST["btnsubmit"])) {
                 <!--lg-6 starts-->
                 <!--basic form starts-->
                 <div class="panel panel-primary" id="hidepanel1">
-
+									<div class="panel-heading">
+											<h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+													เพิ่มกองทุน
+											</h3>
+										</div>
                     <div class="panel-body">
                         <form class="form-horizontal" action="#" method="post">
                             <fieldset>

@@ -1,6 +1,6 @@
 <?php
-$page = 'User';
-$title = 'Hello user';
+$page = 'Admin';
+$title = 'Hello admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
@@ -67,6 +67,7 @@ if (isset($_POST["btnEdit"])) {
         </ol>
     </section>
     <!--section ends-->
+
     <section class="content">
         <!--main content-->
         <div class="row">
@@ -75,7 +76,11 @@ if (isset($_POST["btnEdit"])) {
                 <!--lg-6 starts-->
                 <!--basic form starts-->
                 <div class="panel panel-primary" id="hidepanel1">
-
+									<div class="panel-heading">
+											<h3 class="panel-title"> <i class="livicon" data-name="pencil" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+													แก้ไขข้อมูลกองทุน
+											</h3>
+										</div>
                     <div class="panel-body">
                         <form class="form-horizontal" action="admin_fund_edit.php" method="post">
                             <fieldset>
@@ -91,7 +96,7 @@ if (isset($_POST["btnEdit"])) {
                                         ชื่อกองทุน
                                     </label>
                                     <div class="col-md-3">
-                                    <input  name="fund_name" type="text" type="text" value="<?php echo "$fund_name"; ?>" class="form-control"></div>
+                                    <input  name="fund_name" type="text"  value="<?php echo "$fund_name"; ?>" class="form-control"></div>
                                 </div>
                                 <!-- Message body -->
                                 <div class="form-group">
@@ -115,7 +120,7 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-                                      
+
                                       <button name="btnEdit" type="submit" value="แก้ไขข้อมูลกองทุน" class="btn btn-primary">บันทึก</button>
                                     </div>
                                 </div>

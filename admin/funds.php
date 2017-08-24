@@ -2,6 +2,11 @@
 $page = 'blank';
 $title = 'Blank Page';
 $css = <<<EOT
+<!--page level css -->
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
+<link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<!--end of page level css-->
 EOT;
 require_once('include/_header.php');
 ?>

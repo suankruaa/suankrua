@@ -2,6 +2,11 @@
 $page = 'blank';
 $title = 'Blank Page';
 $css = <<<EOT
+<!--page level css -->
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
+<link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<!--end of page level css-->
 EOT;
 require_once('include/_header.php');
 ?>
@@ -91,23 +96,21 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from committee left join title
-		                  on committee.id_title = title.id_title
-			                left join position on committee.id_position = position.id_position";
+							$sql = "select * from committee";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$id_committee = $row["id_committee"];
-                $title = $row["title"];
+                $id_title = $row["id_title"];
 								$com_name = $row["com_name"];
-								$name_position = $row["name_position"];
+								$id_position = $row["id_position"];
 								$com_address = $row["com_address"];
                 $com_tel = $row["com_tel"];
 
 								echo "<tr>
 										<td>$id_committee</td>
-                    <td>$title</td>
+                    <td>$id_title</td>
 										<td>$com_name</td>
-										<td>$name_position</td>
+										<td>$id_position</td>
 										<td>$com_address</td>
                     <td>$com_tel</td>
 
