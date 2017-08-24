@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admin Login | Josh Admin Template</title>
+    <title>Admin Login </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- global level css -->
     <link href="asset/css/bootstrap.min.css" rel="stylesheet" />
@@ -47,7 +47,7 @@
                                 </div>
                                 <button class="btn btn-lg btn-primary btn-block" value="Login" type="submit">Sign Up</button>
                             </fieldset>
-                        </form>
+                        </form><br />
                         <a href="index.php">กลับหน้าหลัก</a>
                     </div>
                 </div>

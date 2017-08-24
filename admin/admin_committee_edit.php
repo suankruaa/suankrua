@@ -4,10 +4,6 @@ $title = 'Hello admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
-
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
@@ -127,14 +123,26 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
                                     <div class="col-md-6">
-													<!--						<div id="div_title"></div>  -->
 
-																		<select name="id_title" value="<?php echo "$id_title"; ?>">
+																			<select name="id_title" id="id_title">
+																				<?
+																				$sql="select id_title from committee  ";
+																				$result = mysqli_query($link, $sql) ;
+																				while ($row=mysqli_fetch_array($result)){
+																				?>
+																				<option value="<?=$row['id_title']?>">
+																				<?=$row['id_title']?>
+																				</option>
+																				<?
+																				}
+																				?>
+																				</select>
+																		<!--<select name="id_title" value="<?php echo "$id_title"; ?>">
 																		<option value="">--เลือก--</option>
             												<option value="นาย">นาย</option>
             												<option value="นางสาว">นางสาว</option>
 																		<option value="นาง">นาง</option>
-          													</select>
+                                  </select>-->
 
 																			</div>
 																		</div>
@@ -148,10 +156,21 @@ if (isset($_POST["btnEdit"])) {
 																						<div class="form-group">
 				                                    <label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
 				                                    <div class="col-md-6">
-																	<!--						<div id="div_title"></div>  -->
 
 																						<select name="id_position" id="id_position">
-																							<option value="">--เลือก--</option>
+                                              <?
+                                              $sql="select id_position from committee  ";
+                                              $result = mysqli_query($link, $sql) ;
+                                              while ($row=mysqli_fetch_array($result)){
+                                              ?>
+                                              <option value="<?=$row['id_position']?>">
+                                              <?=$row['id_position']?>
+                                              </option>
+                                              <?
+                                              }
+                                              ?>
+                                              </select>
+																						<!--<option value="">--เลือก--</option>
 																						<option value="ประธาน">ประธาน</option>
 				            												<option value="รองประธาน">รองประธาน</option>
 																						<option value="เลขานุการ">เลขานุการ</option>
@@ -161,7 +180,7 @@ if (isset($_POST["btnEdit"])) {
 																						<option value="กรรมการ">กรรมการ</option>
 
 
-				          													</select>
+                                          </select>-->
 
 																							</div>
 																						</div>
@@ -220,9 +239,7 @@ require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <!-- end of page level js -->
 </body>
 </html>

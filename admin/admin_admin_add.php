@@ -1,6 +1,6 @@
 <?php
-$page = 'User';
-$title = 'Hello user';
+$page = 'Admin';
+$title = 'Hello admin';
 $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
@@ -9,17 +9,18 @@ EOT;
 require_once('include/_header.php');
 
 if (isset($_POST["btnsubmit"])) {
-		$id_fund = $_POST["id_fund"];
-		$fund_name = $_POST["fund_name"];
-		$fund_detail = $_POST["fund_detail"];
-		$fund_money = $_POST["fund_money"];
+		$id_admin = $_POST["id_admin"];
+		$name_admin = $_POST["name_admin"];
+		$username = $_POST["username"];
+		$password = $_POST["password"];
 
-		$sql = "INSERT INTO fund (id_fund,fund_name,fund_detail,fund_money) VALUES('$id_fund','$fund_name','$fund_detail','$fund_money')";
+		$sql = "INSERT INTO admin (id_admin,name_admin,username,password)
+		VALUES('$id_admin','$name_admin','$username','$password')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='funds.php';";
+			echo "window.location='list_admin.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
@@ -35,7 +36,7 @@ if (isset($_POST["btnsubmit"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-            เพิ่มข้อมูลกองทุน
+            เพิ่มข้อมูลผู้ดูแลระบบ
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -44,10 +45,10 @@ if (isset($_POST["btnsubmit"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลกองทุน</a>
+                <a href="#">ข้อมูลผู้ดูแลระบบ</a>
             </li>
             <li class="active">
-                เพิ่มข้อมูลกองทุน
+                เพิ่มข้อมูลผู้ดูแลระบบ
             </li>
         </ol>
     </section>
@@ -62,7 +63,7 @@ if (isset($_POST["btnsubmit"])) {
                 <div class="panel panel-primary" id="hidepanel1">
 									<div class="panel-heading">
 											<h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-													เพิ่มกองทุน
+													เพิ่มผู้ดูแลระบบ
 											</h3>
 										</div>
                     <div class="panel-body">
@@ -70,37 +71,29 @@ if (isset($_POST["btnsubmit"])) {
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="id">รหัสกองทุน</label>
-                                    <div class="col-md-3">
-                                        <input id="id_fund" name="id_fund" type="text" placeholder="ID" class="form-control"></div>
+                                <label class="col-md-3 control-label" for="id">รหัสผู้ดูแลระบบ</label>
+                                <div class="col-md-3">
+                                <input id="id_admin" name="id_admin" type="text" placeholder="ID" class="form-control"></div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">
-                                        ชื่อกองทุน
-                                    </label>
-                                    <div class="col-md-3">
-                                        <input id="fund_name" name="fund_name" type="text" placeholder="NAME" class="form-control"></div>
+                                <label class="col-md-3 control-label" for="name">ชื่อผู้ดูแลระบบ</label>
+                                <div class="col-md-3">
+                                <input id="name_admin" name="name_admin" type="text" placeholder="NAME" class="form-control"></div>
                                 </div>
                                 <!-- Message body -->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="detail">
-                                        รายละเอียดกองทุน
-                                    </label>
-                                    <div class="col-md-6">
-                                        <textarea class="form-control" id="fund_detail" name="fund_detail" placeholder="DETAIL" rows="5"></textarea>
-                                    </div>
+																<div class="form-group">
+                                <label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
+                                <div class="col-md-3">
+                                <input id="username" name="username" type="text" placeholder="USERNAME" class="form-control"></div>
                                 </div>
 
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">
-                                        จำนวนเงินเริ่มต้น
-                                    </label>
-                                    <div class="col-md-3">
-                                        <input id="fund_money" name="fund_money" type="text" placeholder="MONEY" class="form-control"></div>
-                                </div>
-                                <!-- Form actions -->
+																<div class="form-group">
+																<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
+																<div class="col-md-3">
+																<input id="password" name="password" type="text" placeholder="PASSWORD" class="form-control"></div>
+																</div>
+																                      <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 

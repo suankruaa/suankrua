@@ -42,7 +42,7 @@
                                 </div>
                                 <button class="btn btn-lg btn-primary btn-block" value="Login" type="submit">Sign in</button>
                             </fieldset>
-                        </form>
+                        </form><br />
                         <a href="frm_register.php">สมัครสมาชิก</a>
                     </div>
                 </div>

@@ -5,9 +5,7 @@ $css = <<<EOT
 <!--page level css -->
 <link href="asset/vendors/jasny-bootstrap/css/jasny-bootstrap.css" rel="stylesheet" />
 
-<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
@@ -96,10 +94,9 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
                                     <div class="col-md-6">
-													<!--						<div id="div_title"></div>  -->
 
 																		<select name="id_title" id="id_title">
-																			<option value="">--เลือก--</option>
+																		<option value="">--เลือก--</option>
             												<option value="นาย">นาย</option>
             												<option value="นางสาว">นางสาว</option>
 																		<option value="นาง">นาง</option>
@@ -188,9 +185,7 @@ require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <!-- end of page level js -->
 </body>
 </html>

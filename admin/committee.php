@@ -96,7 +96,7 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from committee";
+							$sql = "select * from committee ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$id_committee = $row["id_committee"];
@@ -114,8 +114,8 @@ require_once('include/_header.php');
 										<td>$com_address</td>
                     <td>$com_tel</td>
 
-										<td><a href='admin_committee_edit.php?id_committee=$id_committee'>แก่ไข้</a></td>
-										<td><a href='committee.php?id_committee=$id_committee' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
+                    <td><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
+										<td><a href='committee.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}
 						?>

@@ -2,6 +2,11 @@
 $page = 'blank';
 $title = 'Blank Page';
 $css = <<<EOT
+<!--page level css -->
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
+<link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+<!--end of page level css-->
 EOT;
 require_once('include/_header.php');
 ?>
@@ -40,7 +45,7 @@ require_once('include/_header.php');
                     <div class="portlet-body">
                         <div class="table-toolbar">
                             <div class="btn-group">
-                              <a href="admin_fund_add.php"   class=" btn btn-custom">
+                              <a href="admin_admin_add.php"   class=" btn btn-custom">
                                     เพิ่ม
                                     <i class="fa fa-plus"></i>
                                 </button> </a>
@@ -103,8 +108,8 @@ require_once('include/_header.php');
 										<td>$username</td>
 										<td>$password</td>
 
-										<td><a href='admin_admin_edit.php?id_admin=$id_admin'>แก่ไข้</a></td>
-										<td><a href='list_admin.php?id_admin=$id_admin' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
+                    <td><a href='admin_admin_edit.php?id_admin=$id_admin' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
+										<td><a href='list_admin.php?id_admin=$id_admin' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}
 						?>

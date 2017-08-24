@@ -95,27 +95,24 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from member
-                      LEFT JOIN gender ON member.id_gender = gender.id_gender
-		                  LEFT JOIN title  ON member.id_title = title.id_title
-		                  LEFT JOIN status ON member.id_status = status.id_status";
+							$sql = "select * from member";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$mem_id = $row["mem_id"];
-								$title = $row["title"];
+								$id_title = $row["id_title"];
 								$mem_name = $row["mem_name"];
 								$mem_birthday = $row["mem_birthday"];
                 $mem_tel = $row["mem_tel"];
 
 								echo "<tr>
 										<td>$mem_id</td>
-										<td>$title</td>
+										<td>$id_title</td>
 										<td>$mem_name</td>
 										<td>$mem_birthday</td>
                     <td>$mem_tel</td>
 
-										<td><a href='admin_member_edit.php?mem_id=$mem_id'>แก่ไข้</a></td>
-										<td><a href='member.php?mem_id=$mem_id' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
+                    <td><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
+										<td><a href='member.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}
 						?>

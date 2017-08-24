@@ -107,9 +107,8 @@ require_once('include/_header.php');
 										<td>$fund_name</td>
 										<td>$fund_detail</td>
 										<td>$fund_money</td>
-
-										<td><a href='admin_fund_edit.php?id_fund=$id_fund'>แก่ไข้</a></td>
-										<td><a href='funds.php?id_fund=$id_fund' onclick='return confirm(\"ยืนยันการลบ\");'>ลบ</a></td>
+                    <td><a href='admin_fund_edit.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
+										<td><a href='funds.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}
 						?>
