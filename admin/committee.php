@@ -76,16 +76,13 @@ require_once('include/_header.php');
                             <table class="table table-striped table-bordered table-hover dataTable no-footer" id="sample_editable_1" role="grid">
                                 <thead>
                                     <tr role="row">
-
                                         <th>รหัสกรรมการ</th>
                                         <th>คำนำหน้าชื่อ</th>
                                         <th>ชื่อ-สกุล</th>
                                         <th>ตำแหน่ง</th>
                                         <th>ที่อยู่</th>
                                         <th>เบอร์โทร</th>
-                                        <th>แก้ไข</th>
-                                        <th>ลบ</th>
-
+                                        <th>การจัดการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -114,8 +111,9 @@ require_once('include/_header.php');
 										<td>$com_address</td>
                     <td>$com_tel</td>
 
-                    <td><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
-										<td><a href='committee.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                    <td><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_committee_view.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-eye'></i></a> |
+										<a href='committee.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";
 							}
 						?>
