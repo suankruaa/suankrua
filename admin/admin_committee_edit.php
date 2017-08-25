@@ -123,7 +123,6 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
                                     <div class="col-md-3">
-
 																			<select class="form-control" name="id_title" id="id_title">
 																				<?php
 																					$sql="SELECT * FROM title";
@@ -134,7 +133,7 @@ if (isset($_POST["btnEdit"])) {
 																				<?php
 																					}
 																				?>
-																				</select>									
+																				</select>
 																			</div>
 																		</div>
 
@@ -153,7 +152,7 @@ if (isset($_POST["btnEdit"])) {
                                               <?php
 	                                              $sql="SELECT * FROM  position  ";
 	                                              $result = mysqli_query($link, $sql) ;
-	                                              	while ($row=mysqli_fetch_array($result)){
+	                                              while ($row=mysqli_fetch_array($result)){
                                               ?>
                                               <option value="<?=$row['id_position']?>"> <?=$row['name_position']?> </option>
                                               <?php } ?>

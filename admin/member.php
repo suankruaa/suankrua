@@ -82,9 +82,7 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>วัน/เดือน/ปีเกิด</th>
                                         <th>เบอร์โทร</th>
-                                        <th>แก้ไข</th>
-                                        <th>ลบ</th>
-
+                                        <th>จัดการข้อมูล</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,7 +93,7 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from member";
+							$sql = "select * from  member";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$mem_id = $row["mem_id"];
@@ -111,9 +109,10 @@ require_once('include/_header.php');
 										<td>$mem_birthday</td>
                     <td>$mem_tel</td>
 
-                    <td><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a></td>
-										<td><a href='member.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
-									</tr>";
+                    <td><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <a href='admin_member_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
+                    <a href='member.php?mem_id=$mem_id' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
+                  </tr>";
 							}
 						?>
 					</tbody>
@@ -130,8 +129,6 @@ require_once('include/_header.php');
 <?php
 require_once('include/_footer.php');
 ?>
-
-
 <script type="text/javascript" src="asset/vendors/datatables/select2.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="asset/vendors/datatables/dataTables.bootstrap.js"></script>

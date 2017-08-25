@@ -38,8 +38,6 @@ if (isset($_POST["btnsubmit"])) {
 		}
 	}
 ?>
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -80,55 +78,57 @@ if (isset($_POST["btnsubmit"])) {
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="id">รหัสกรรมการ</label>
-                                    <div class="col-md-3">
-                                        <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control"></div>
+                                <label class="col-md-3 control-label" for="id">รหัสกรรมการ</label>
+                                <div class="col-md-3">
+                                <input id="id_committee" name="id_committee" type="text" placeholder="ID" class="form-control"></div>
                                 </div>
-                                <!-- Email input-->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
-                                    <div class="col-md-3">
-                                        <input id="com_idcard" name="com_idcard" type="text" placeholder="IDCARD" class="form-control"></div>
-                                </div>
-                                <!-- Message body -->
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-6">
 
-																		<select name="id_title" id="id_title">
-																		<option value="">--เลือก--</option>
-            												<option value="นาย">นาย</option>
-            												<option value="นางสาว">นางสาว</option>
-																		<option value="นาง">นาง</option>
-          													</select>
+                                <div class="form-group">
+                                <label class="col-md-3 control-label" for="name">เลขประจำตัวประชาชน</label>
+                                <div class="col-md-3">
+                                <input id="com_idcard" name="com_idcard" type="text" placeholder="IDCARD" class="form-control"></div>
+                                </div>
+
+                                <div class="form-group">
+                                <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
+                                <div class="col-md-3">
+																<select class="form-control" name="id_title" id="id_title">
+																				<option>--เลือก--</option>
+																				<?php
+																					$sql="SELECT * FROM title";
+																					$result = mysqli_query($link, $sql);
+																					while ($row=mysqli_fetch_array($result)){
+																				?>
+																				<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
+																				<?php
+																					}
+																				?>
+																				</select>
 
 																			</div>
 																		</div>
 
 																		<div class="form-group">
-		                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>
-		                                    <div class="col-md-3">
-		                                        <input id="com_name" name="com_name" type="text" placeholder="NAME" class="form-control"></div>
+		                                <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>
+		                                <div class="col-md-3">
+		                                <input id="com_name" name="com_name" type="text" placeholder="NAME" class="form-control"></div>
 		                                </div>
 
-																						<div class="form-group">
-				                                    <label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
-				                                    <div class="col-md-6">
-																	<!--						<div id="div_title"></div>  -->
-
-																						<select name="id_position" id="id_position">
-																							<option value="">--เลือก--</option>
-																						<option value="ประธาน">ประธาน</option>
-				            												<option value="รองประธาน">รองประธาน</option>
-																						<option value="เลขานุการ">เลขานุการ</option>
-																						<option value="เหรัญญิก">เหรัญญิก</option>
-																						<option value="ผู้ทรงคุณวุฒิ">ผู้ทรงคุณวุฒิ</option>
-																						<option value="ปฏิคม">ปฏิคม</option>
-																						<option value="กรรมการ">กรรมการ</option>
-
-
-				          													</select>
-
+																		<div class="form-group">
+				                             <label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
+				                            <div class="col-md-3">
+																						<select class="form-control" name="id_position" id="id_position">
+																							<option>--เลือก--</option>
+																							<?php
+																								$sql=" SELECT * FROM position";
+																								$result = mysqli_query($link, $sql);
+																								while ($row=mysqli_fetch_array($result)){
+																							?>
+																							<option value="<?=$row['id_position']?>"> <?=$row['name_position']?></option>
+																							<?php
+																								}
+																							?>
+																							</select>
 																							</div>
 																						</div>
 
@@ -136,32 +136,31 @@ if (isset($_POST["btnsubmit"])) {
 			                                    <label class="col-md-3 control-label" for="birth">วันเกิด</label>
 			                                    <div class="col-md-3">
 	                                        <input type="date" id="datepicker" name="com_birthday" class="form-control round-form"     placeholder="DATE"></div>
-
-																					  </div>
+																					</div>
 
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">ที่อยู่</label>
-                                    <div class="col-md-3">
-                                        <input id="com_address" name="com_address" type="text" placeholder="ADDRESS" class="form-control"></div>
+                                <label class="col-md-3 control-label" for="money">ที่อยู่</label>
+                                <div class="col-md-3">
+                                <input id="com_address" name="com_address" type="text" placeholder="ADDRESS" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-																		<label class="col-md-3 control-label" for="name">เบอร์โทร</label>
-																		<div class="col-md-3">
-																				<input id="com_tel" name="com_tel" type="text" placeholder="TEL" class="form-control"></div>
+																<label class="col-md-3 control-label" for="name">เบอร์โทร</label>
+																<div class="col-md-3">
+																<input id="com_tel" name="com_tel" type="text" placeholder="TEL" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
-																		<label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
-																		<div class="col-md-3">
-																				<input id="com_username" name="com_username" type="text" placeholder="USERNAME" class="form-control"></div>
+																<label class="col-md-3 control-label" for="name">ชื่อผู้ใช้</label>
+																<div class="col-md-3">
+																<input id="com_username" name="com_username" type="text" placeholder="USERNAME" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
-																		<label class="col-md-3 control-label" for="name">รหัสผ่าน</label>
-																		<div class="col-md-3">
-																				<input id="com_password" name="com_password" type="text" placeholder="PASSWORD" class="form-control"></div>
+																<label class="col-md-3 control-label" for="name">รหัสผ่าน</label>
+																<div class="col-md-3">
+																<input id="com_password" name="com_password" type="text" placeholder="PASSWORD" class="form-control"></div>
 																</div>
                                 <!-- Form actions -->
                                 <div class="form-group">

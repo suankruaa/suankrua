@@ -98,24 +98,37 @@ if (isset($_POST["btnsubmit"])) {
 
 																<div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">เพศ</label>
-                                    <div class="col-md-6">
-																		<select name="id_gender" id="id_gender">
-																		<option value="">--เลือก--</option>
-            												<option value="ชาย">ชาย</option>
-            												<option value="หญิง">หญิง</option>
-          													</select>
+                                    <div class="col-md-3">
+																			<select class="form-control" name="id_gender" id="id_gender">
+																							<option>--เลือก--</option>
+																							<?php
+																								$sql="SELECT * FROM gender";
+																								$result = mysqli_query($link, $sql);
+																								while ($row=mysqli_fetch_array($result)){
+																							?>
+																							<option value="<?=$row['id_gender']?>"> <?=$row['gender_name']?></option>
+																							<?php
+																								}
+																							?>
+																							</select>
 																		</div>
 																		</div>
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-6">
-																		<select name="id_title" id="id_title">
-																		<option value="">--เลือก--</option>
-            												<option value="นาย">นาย</option>
-            												<option value="นางสาว">นางสาว</option>
-																		<option value="นาง">นาง</option>
-          													</select>
+                                    <div class="col-md-3">
+																			<select class="form-control" name="id_title" id="id_title">
+																							<option>--เลือก--</option>
+																							<?php
+																								$sql="SELECT * FROM title";
+																								$result = mysqli_query($link, $sql);
+																								while ($row=mysqli_fetch_array($result)){
+																							?>
+																							<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
+																							<?php
+																								}
+																							?>
+																		</select>
 																		</div>
 																		</div>
 
@@ -133,15 +146,19 @@ if (isset($_POST["btnsubmit"])) {
 
 																					<div class="form-group">
 																							<label class="col-md-3 control-label" for="status">สถานภาพ</label>
-																							<div class="col-md-6">
-
-																							<select name="id_status" id="id_status">
-																							<option value="">--เลือก--</option>
-																							<option value="โสด">โสด</option>
-																							<option value="สมรส">สมรส</option>
-																							<option value="หม้าย">หม้าย</option>
-																							<option value="อย่าร้าง">อย่าร้าง</option>
-																							</select>
+																							<div class="col-md-3">
+																								<select class="form-control" name="id_status" id="id_status">
+																												<option>--เลือก--</option>
+																												<?php
+																													$sql="SELECT * FROM status";
+																													$result = mysqli_query($link, $sql);
+																													while ($row=mysqli_fetch_array($result)){
+																												?>
+																												<option value="<?=$row['id_status']?>"> <?=$row['status_name']?></option>
+																												<?php
+																													}
+																												?>
+																												</select>
 																								</div>
 																							</div>
 

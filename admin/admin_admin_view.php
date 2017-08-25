@@ -8,33 +8,21 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["id_committee"])) {
-		$id_committee = $_GET["id_committee"];
-		$sql = "SELECT * FROM committee WHERE id_committee='$id_committee'";
+if (isset($_GET["id_admin"])) {
+		$id_admin = $_GET["id_admin"];
+		$sql = "SELECT * FROM admin WHERE id_admin='$id_admin'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
-			$id_committee = $row["id_committee"];
-			$com_idcard = $row["com_idcard"];
-			$id_title = $row["id_title"];
-			$com_name = $row["com_name"];
-			$id_position = $row["id_position"];
-			$com_birthday = $row["com_birthday"];
-			$com_address = $row["com_address"];
-			$com_tel = $row["com_tel"];
-			$com_username = $row["com_username"];
-			$com_password = $row["com_password"];
+			$id_admin = $row["id_admin"];
+			$name_admin = $row["name_admin"];
+			$username = $row["username"];
+			$password = $row["password"];
 		}else{
-			$id_committee = "";
-			$com_idcard = "";
-			$id_title = "";
-			$com_name = "";
-			$id_position = "";
-			$com_birthday = "";
-			$com_address = "";
-			$com_tel = "";
-			$com_username = "";
-			$com_password = "";
+			$id_admin = "";
+			$name_admin = "";
+			$username = "";
+			$password = "";
 		}
 	}
 ?>
@@ -46,7 +34,7 @@ if (isset($_GET["id_committee"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          ข้อมูลกรรมการ
+          ข้อมูลผู้ดูแลระบบ
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -55,10 +43,10 @@ if (isset($_GET["id_committee"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลกรรมการ</a>
+                <a href="#">ข้อมูลผู้ดูแลระบบ</a>
             </li>
             <li class="active">
-                ข้อมูลกรรมการ
+                ข้อมูลผู้ดูแลระบบ
             </li>
         </ol>
     </section>
@@ -68,7 +56,7 @@ if (isset($_GET["id_committee"])) {
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title"> <i class="livicon" data-name="credit-card" data-size="20" data-loop="true" data-c="#fff" data-hc="#fff"></i>
-                      รายงานรายละเอียดข้อมูลกรรมการ
+                      รายงานรายละเอียดข้อมูลผู้ดูแลระบบ
                     </h3>
                 </div>
                 <div class="row">
@@ -77,18 +65,12 @@ if (isset($_GET["id_committee"])) {
 										</div> -->
 										<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
 												<div class="container">
-													<h2><?=$id_title?> <?=$com_name?><p></h2>
+													<h2><?=$id_admin?> <?=$name_admin?><p></h2>
 												</div>
-													<label class="col-md-5 control-label" for="id">รหัสกรรมการ</label><p><?=$id_committee?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$com_idcard?></p>
-													<label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$com_name?></p>
-													<label class="col-md-5 control-label" for="id">ตำแหน่ง</label><p><?=$id_position?></p>
-													<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$com_birthday?></p>
-													<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$com_address?></p>
-													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$com_tel?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$com_username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$com_password?></p>
+													<label class="col-md-5 control-label" for="id">รหัสผู้ดูแลระบบ</label><p><?=$id_admin?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อผู้ดูแลระบบ</label><p><?=$name_admin?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$username?></p>
+													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$password?></p>
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">

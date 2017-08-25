@@ -23,21 +23,10 @@ if (isset($_POST["btnEdit"])) {
 		$mem_username = $_POST["mem_username"];
 		$mem_password = $_POST["mem_password"];
 
-
-		$sql = "update member set mem_id ='$mem_id',
-		 				mem_idcard ='$mem_idcard',
-		  			id_gender ='$id_genger',
-						id_title='$id_title',
-						mem_name ='$mem_name',
-		 				mem_birthday ='$mem_birthday',
-		 				mem_address ='$mem_address',
-						id_status ='$id_status',
-		 				mem_occupation ='$mem_occupation',
-		  			mem_address ='$mem_address',
-						mem_tel ='$mem_tel',
-		 				mem_username ='$mem_username',
-		  			mem_password ='$mem_password'
-						where mem_id ='$mem_id'";
+		$sql = "update member set mem_id='$mem_id', mem_idcard='$mem_idcard',id_gender='$id_gender', id_title='$id_title',
+		mem_name='$mem_name',mem_birthday='$mem_birthday',id_status='$id_status',mem_occupation='$mem_occupation', mem_address='$mem_address',
+		mem_tel='$mem_tel',mem_email='$mem_email', mem_username='$mem_username', mem_password='$mem_password'
+		where mem_id='$mem_id'";
 
 		$result = mysqli_query($link, $sql);
 		if ($result) {
@@ -85,9 +74,6 @@ if (isset($_POST["btnEdit"])) {
 		}
 	}
 ?>
-
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -132,28 +118,25 @@ if (isset($_POST["btnEdit"])) {
                                 <div class="col-md-3">
                                 <input  name="mem_id" type="text" value="<?php echo "$mem_id"; ?>" class="form-control"readonly></div>
                                 </div>
-                                <!-- Email input-->
+
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="idcard">เลขประจำตัวประชาชน</label>
                                 <div class="col-md-3">
                                 <input name="mem_idcard" type="text" value="<?php echo "$mem_idcard"; ?>" class="form-control"></div>
                                 </div>
-                                <!-- Message body -->
+
 																<div class="form-group">
 																		<label class="col-md-3 control-label" for="gender">เพศ</label>
-																		<div class="col-md-6">
-
-																			<select name="id_gender" id="id_gender">
-																				<?
-																				$sql="select id_gender from member  ";
-																				$result = mysqli_query($link, $sql) ;
-																				while ($row=mysqli_fetch_array($result)){
+																		<div class="col-md-3">
+																			<select class="form-control" name="id_gender" id="id_gender">
+																				<?php
+																					$sql="SELECT * FROM gender";
+																					$result = mysqli_query($link, $sql);
+																					while ($row=mysqli_fetch_array($result)){
 																				?>
-																				<option value="<?=$row['id_gender']?>">
-																				<?=$row['id_gender']?>
-																				</option>
-																				<?
-																				}
+																				<option value="<?=$row['id_gender']?>"> <?=$row['gender_name']?></option>
+																				<?php
+																					}
 																				?>
 																				</select>
 																			</div>
@@ -161,28 +144,18 @@ if (isset($_POST["btnEdit"])) {
 
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="nam">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-6">
-
-																			<select name="id_title" id="id_title">
-																				<?
-																				$sql="select id_title from member";
-																				$result = mysqli_query($link, $sql) ;
-																				while ($row=mysqli_fetch_array($result)){
+                                    <div class="col-md-3">
+																			<select class="form-control" name="id_title" id="id_title">
+																				<?php
+																					$sql="SELECT * FROM title";
+																					$result = mysqli_query($link, $sql);
+																					while ($row=mysqli_fetch_array($result)){
 																				?>
-																				<option value="<?=$row['id_title']?>">
-																				<?=$row['id_title']?>
-																				</option>
-																				<?
-																				}
+																				<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
+																				<?php
+																					}
 																				?>
 																				</select>
-																		<!--<select name="id_title" value="<?php echo "$id_title"; ?>">
-																		<option value="">--เลือก--</option>
-            												<option value="นาย">นาย</option>
-            												<option value="นางสาว">นางสาว</option>
-																		<option value="นาง">นาง</option>
-                                  </select>-->
-
 																			</div>
 																		</div>
 
@@ -200,30 +173,18 @@ if (isset($_POST["btnEdit"])) {
 
 																						<div class="form-group">
 				                                    <label class="col-md-3 control-label" for="status">สถานภาพ</label>
-				                                    <div class="col-md-6">
-
-																						<select name="id_status" id="id_status">
-                                              <?
-                                              $sql="select id_status from member  ";
-                                              $result = mysqli_query($link, $sql) ;
-                                              while ($row=mysqli_fetch_array($result)){
-                                              ?>
-                                              <option value="<?=$row['id_status']?>">
-                                              <?=$row['id_status']?>
-                                              </option>
-                                              <?
-                                              }
-                                              ?>
-                                              </select>
-																						<!--<option value="">--เลือก--</option>
-																						<option value="ประธาน">ประธาน</option>
-				            												<option value="รองประธาน">รองประธาน</option>
-																						<option value="เลขานุการ">เลขานุการ</option>
-																						<option value="เหรัญญิก">เหรัญญิก</option>
-																						<option value="ผู้ทรงคุณวุฒิ">ผู้ทรงคุณวุฒิ</option>
-																						<option value="ปฏิคม">ปฏิคม</option>
-																						<option value="กรรมการ">กรรมการ</option>
-                                          </select>-->
+				                                    <div class="col-md-3">
+																							<select class="form-control" name="id_status" id="id_status">
+																								<?php
+																									$sql="SELECT * FROM status";
+																									$result = mysqli_query($link, $sql);
+																									while ($row=mysqli_fetch_array($result)){
+																								?>
+																								<option value="<?=$row['id_status']?>"> <?=$row['status_name']?></option>
+																								<?php
+																									}
+																								?>
+																								</select>
 																							</div>
 																						</div>
 
@@ -265,16 +226,13 @@ if (isset($_POST["btnEdit"])) {
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
-
 																			<button name="btnEdit" type="submit" value="แก้ไขข้อมูลสมาชิก" class="btn btn-primary">บันทึก</button>
-
                                     </div>
                                 </div>
                             </fieldset>
                         </form>
                     </div>
                 </div>
-
         <!--main content ends-->
     </section>
     <!-- content -->
@@ -285,11 +243,9 @@ require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-
 <!-- end of page level js -->
 </body>
 </html>
-
 <script>
   $(document).ready(function() {
     $("#datepicker").datepicker();
