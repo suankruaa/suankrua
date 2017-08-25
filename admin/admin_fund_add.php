@@ -7,26 +7,23 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+	if (isset($_POST["btnsubmit"])) {
+			$id_fund = $_POST["id_fund"];
+			$fund_name = $_POST["fund_name"];
+			$fund_detail = $_POST["fund_detail"];
+			$fund_money = $_POST["fund_money"];
 
-if (isset($_POST["btnsubmit"])) {
-		$id_fund = $_POST["id_fund"];
-		$fund_name = $_POST["fund_name"];
-		$fund_detail = $_POST["fund_detail"];
-		$fund_money = $_POST["fund_money"];
-
-		$sql = "INSERT INTO fund (id_fund,fund_name,fund_detail,fund_money) VALUES('$id_fund','$fund_name','$fund_detail','$fund_money')";
-		$result = mysqli_query($link, $sql);
-		if ($result) {
-			echo "<script type='text/javascript'>";
-			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='funds.php';";
-			echo "</script>";
-			//header('location: admin_product.php');
-		}else{
-			die("Query Failed" . mysqli_error($conn));
-			// echo "<font color='red'>SQL Error</font><hr>";
+			$sql = "INSERT INTO fund (id_fund,fund_name,fund_detail,fund_money) VALUES('$id_fund','$fund_name','$fund_detail','$fund_money')";
+			$result = mysqli_query($link, $sql);
+			if ($result) {
+				echo "<script type='text/javascript'>";
+				echo "alert('เพิมเสร็จแล้ว');";
+				echo "window.location='funds.php';";
+				echo "</script>";
+			}else{
+				die("Query Failed" . mysqli_error($link));
+			}
 		}
-	}
 ?>
 
 
@@ -66,7 +63,7 @@ if (isset($_POST["btnsubmit"])) {
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="#" method="post">
+                        <form class="form-horizontal" action="admin_fund_add.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">

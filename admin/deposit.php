@@ -14,7 +14,7 @@ require_once('include/_header.php');
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-          ข้อมูลกองทุนหมู่บ้าน
+          ข้อมูลการฝากสัจจะออมทรัพย์
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -26,7 +26,7 @@ require_once('include/_header.php');
                 <a href="#">DataTables</a>
             </li>
             <li class="active">
-              ข้อมูลกองทุนหมู่บ้าน
+              ข้อมูลกองการฝากสัจจะออมทรัพย์
             </li>
         </ol>
     </section>
@@ -39,7 +39,7 @@ require_once('include/_header.php');
                 <div class="portlet box default">
                     <div class="portlet-title">
                         <div class="caption"> <i class="livicon" data-name="edit" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-                          ตารางข้อมูลกองทุนหมู่บ้าน
+                          ตารางข้อมูลการฝากสัจจะออมทรัพย์
                         </div>
                     </div>
                     <div class="portlet-body">
@@ -77,13 +77,16 @@ require_once('include/_header.php');
                                 <thead>
                                     <tr role="row">
 
-                                        <th>รหัสกองทุน</th>
-                                        <th>ชื่อกองทุน</th>
-                                        <th>รายละเอียดกองทุน</th>
-                                        <th>จำนวนเงินเริ่มต้น</th>
-                                        <th>แก้ไข</th>
-                                        <th>ลบ</th>
+                                        <th>รหัสสมาชิก</th>
+                                        <th>วันที่ฝาก</th>
+                                        <th>ชื่อผู้ฝาก</th>
+                                        <th>ชื่อผู้รับฝาก</th>
+                                        <th>ฝาก</th>
+                                        <th>ถอน</th>
+                                        <th>ยอดเงินคงเหลือ</th>
 
+                                        <th>ดูข้อมูล</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>

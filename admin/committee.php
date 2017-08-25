@@ -1,6 +1,6 @@
 <?php
-$page = 'blank';
-$title = 'Blank Page';
+$page = 'Admin';
+$title = 'Admin Page';
 $css = <<<EOT
 <!--page level css -->
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />

@@ -83,13 +83,13 @@ if (isset($_POST["btnsubmit"])) {
                                 </div>
                                 <!-- Message body -->
 																<div class="form-group">
-                                <label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
+                                <label class="col-md-3 control-label" for="user">ชื่อผู้ใช้ *</label>
                                 <div class="col-md-3">
                                 <input id="username" name="username" type="text" placeholder="USERNAME" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
+																<label class="col-md-3 control-label" for="pass">รหัสผ่าน *</label>
 																<div class="col-md-3">
 																<input id="password" name="password" type="text" placeholder="PASSWORD" class="form-control"></div>
 																</div>

@@ -122,67 +122,43 @@ if (isset($_POST["btnEdit"])) {
                                 <!-- Message body -->
                                 <div class="form-group">
                                     <label class="col-md-3 control-label" for="detail">คำนำหน้าชื่อ</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
 
-																			<select name="id_title" id="id_title">
-																				<?
-																				$sql="select id_title from committee  ";
-																				$result = mysqli_query($link, $sql) ;
-																				while ($row=mysqli_fetch_array($result)){
+																			<select class="form-control" name="id_title" id="id_title">
+																				<?php
+																					$sql="SELECT * FROM title";
+																					$result = mysqli_query($link, $sql);
+																					while ($row=mysqli_fetch_array($result)){
 																				?>
-																				<option value="<?=$row['id_title']?>">
-																				<?=$row['id_title']?>
-																				</option>
-																				<?
-																				}
+																				<option value="<?=$row['id_title']?>"> <?=$row['title']?></option>
+																				<?php
+																					}
 																				?>
-																				</select>
-																		<!--<select name="id_title" value="<?php echo "$id_title"; ?>">
-																		<option value="">--เลือก--</option>
-            												<option value="นาย">นาย</option>
-            												<option value="นางสาว">นางสาว</option>
-																		<option value="นาง">นาง</option>
-                                  </select>-->
-
+																				</select>									
 																			</div>
 																		</div>
 
 																		<div class="form-group">
 		                                    <label class="col-md-3 control-label" for="name">ชื่อ-สกุล</label>
 		                                    <div class="col-md-3">
-		                                        <input  name="com_name" type="text" value="<?php echo "$com_name"; ?>" class="form-control"></div>
+		                                        <input  name="com_name" type="text" value="<?php echo "$com_name"; ?>" class="form-control">
+																				</div>
 		                                </div>
 
 																						<div class="form-group">
-				                                    <label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
-				                                    <div class="col-md-6">
+				                                    	<label class="col-md-3 control-label" for="detail">ตำแหน่ง</label>
+				                                    <div class="col-md-3">
 
-																						<select name="id_position" id="id_position">
-                                              <?
-                                              $sql="select id_position from committee  ";
-                                              $result = mysqli_query($link, $sql) ;
-                                              while ($row=mysqli_fetch_array($result)){
+																						<select class="form-control" name="id_position" id="id_position">
+                                              <?php
+	                                              $sql="SELECT * FROM  position  ";
+	                                              $result = mysqli_query($link, $sql) ;
+	                                              	while ($row=mysqli_fetch_array($result)){
                                               ?>
-                                              <option value="<?=$row['id_position']?>">
-                                              <?=$row['id_position']?>
-                                              </option>
-                                              <?
-                                              }
-                                              ?>
-                                              </select>
-																						<!--<option value="">--เลือก--</option>
-																						<option value="ประธาน">ประธาน</option>
-				            												<option value="รองประธาน">รองประธาน</option>
-																						<option value="เลขานุการ">เลขานุการ</option>
-																						<option value="เหรัญญิก">เหรัญญิก</option>
-																						<option value="ผู้ทรงคุณวุฒิ">ผู้ทรงคุณวุฒิ</option>
-																						<option value="ปฏิคม">ปฏิคม</option>
-																						<option value="กรรมการ">กรรมการ</option>
-
-
-                                          </select>-->
-
-																							</div>
+                                              <option value="<?=$row['id_position']?>"> <?=$row['name_position']?> </option>
+                                              <?php } ?>
+                                            </select>
+																						</div>
 																						</div>
 
 																					<div class="form-group">
@@ -236,7 +212,7 @@ if (isset($_POST["btnEdit"])) {
 <!-- right-side -->
 <?php
 require_once('include/_footer.php');
-?>
+?>nd
 <!-- begining of page level js -->
 <script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 

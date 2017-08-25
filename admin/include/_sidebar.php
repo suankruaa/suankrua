@@ -48,13 +48,13 @@
         </a>
         <ul class="sub-menu">
             <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
-                <a href="form_builder.php">
+                <a href="admin_member_add.php">
                     <i class="fa fa-angle-double-right"></i>
                     สมัครสมาชิกสัจจะฯ
                 </a>
             </li>
             <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
-                <a href="form_builder2.php">
+                <a href="deposit.php">
                     <i class="fa fa-angle-double-right"></i>
                     ฝาก
                 </a>

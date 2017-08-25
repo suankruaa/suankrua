@@ -7,16 +7,20 @@ $css = <<<EOT
 <!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+// `id_fund`, `fund_name`, `fund_detail`, `fund_money
 
 if (isset($_POST["btnEdit"])) {
+		$fid = $_POST["fid"]; //เก็บค่า id เก่า เพื่ออัพเดตข้อมูล
 		$id_fund = $_POST["id_fund"];
 		$fund_name = $_POST["fund_name"];
 		$fund_detail = $_POST["fund_detail"];
 		$fund_money = $_POST["fund_money"];
 
-		$sql = "update fund set id_fund='$id_fund', fund_name='$fund_name', fund_detail='$fund_detail', fund_money='$fund_money' where id_fund='$id_fund'";
-		//echo $sql;exit;
+		$sql = "UPDATE fund SET id_fund='$id_fund', fund_name='$fund_name', fund_detail='$fund_detail', fund_money='$fund_money' WHERE id_fund='$fid'";
+		// echo $sql;exit;
 		$result = mysqli_query($link, $sql);
+
+		// echo $result; exit;
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('แก้ไขข้อมูลสำเร็จ');";
@@ -27,8 +31,8 @@ if (isset($_POST["btnEdit"])) {
 			echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}else{
-		$id_fund = $_GET["id_fund"];
-		$sql = "select * from fund where id_fund='$id_fund'";
+		$fid = $_GET["id_fund"];
+		$sql = "SELECT * FROM fund WHERE id_fund='$fid'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
@@ -119,8 +123,7 @@ if (isset($_POST["btnEdit"])) {
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
-
-
+																			<input type="hidden" name="fid" value="<?=$id_fund?>">
                                       <button name="btnEdit" type="submit" value="แก้ไขข้อมูลกองทุน" class="btn btn-primary">บันทึก</button>
                                     </div>
                                 </div>
