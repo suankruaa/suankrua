@@ -10,10 +10,9 @@ require_once('include/_header.php');
 
 if (isset($_GET["mem_id"])) {
 		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT * FROM member WHERE mem_id='$mem_id'";
+		$sql = "SELECT * FROM member WHERE mem_id ='$mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
-			$row = mysqli_fetch_array($result);
 			$row = mysqli_fetch_array($result);
 			$mem_id = $row["mem_id"];
 			$mem_idcard = $row["mem_idcard"];
@@ -23,7 +22,7 @@ if (isset($_GET["mem_id"])) {
 			$mem_birthday = $row["mem_birthday"];
 			$id_status = $row["id_status"];
 			$mem_occupation = $row["mem_occupation"];
-			$mem_address = $row["mem_address"];
+			$mem_address =$row["mem_address"];
 			$mem_tel = $row["mem_tel"];
 			$mem_email = $row["mem_email"];
 			$mem_username = $row["mem_username"];
@@ -36,12 +35,13 @@ if (isset($_GET["mem_id"])) {
 			$mem_name = "";
 			$mem_birthday = "";
 			$id_status = "";
-			$mem_occupation = "";
+			$mem_occupation ="";
 			$mem_address = "";
 			$mem_tel = "";
 			$mem_email = "";
 			$mem_username = "";
 			$mem_password = "";
+
 		}
 	}
 ?>
@@ -86,20 +86,19 @@ if (isset($_GET["mem_id"])) {
 												<div class="container">
 													<h2><?=$id_title?> <?=$mem_name?><p></h2>
 												</div>
-
-													<label class="col-md-12 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
-													<label class="col-md-12 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$mem_idcard?></p>
-													<label class="col-md-12 control-label" for="id">เพศ</label><p><?=$id_gender?></p>
-													<label class="col-md-12 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-													<label class="col-md-12 control-label" for="id">ชื่อ-สกุล</label><p><?=$mem_name?></p>
-													<label class="col-md-12 control-label" for="id">วันเกิด</label><p><?=$mem_birthday?></p>
-													<label class="col-md-12 control-label" for="id">สถานะ</label><p><?=$id_status?></p>
-													<label class="col-md-12 control-label" for="id">อาชีพ</label><p><?=$mem_occupation?></p>
-													<label class="col-md-12 control-label" for="id">ที่อยู่</label><p><?=$mem_address?></p>
-													<label class="col-md-12 control-label" for="id">เบอร์โทร</label><p><?=$mem_tel?></p>
-													<label class="col-md-12 control-label" for="id">อีเมล</label><p><?=$mem_tel?></p>
-													<label class="col-md-12 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
-													<label class="col-md-12 control-label" for="id">รหัสผ่าน</label><p><?=$mem_password?></p>
+													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
+													<label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$mem_idcard?></p>
+													<label class="col-md-5 control-label" for="id">เพศ</label><p><?=$id_gender?></p>
+													<label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$mem_name?></p>
+													<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$mem_birthday?></p>
+													<label class="col-md-5 control-label" for="id">สถานภาพ</label><p><?=$id_status?></p>
+													<label class="col-md-5 control-label" for="id">อาชีพ</label><p><?=$mem_occupation?></p>
+													<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$mem_address?></p>
+													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$mem_tel?></p>
+													<label class="col-md-5 control-label" for="id">อีเมล</label><p><?=$mem_email?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$mem_username?></p>
+													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$mem_password?></p>
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
