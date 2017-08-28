@@ -190,12 +190,14 @@ if (isset($_POST["btnsubmit"])) {
 																<label class="col-md-3 control-label" for="user">ชื่อผู้ใช้</label>
 																<div class="col-md-3">
 																<input id="mem_username" name="mem_username" type="text" placeholder="USERNAME" class="form-control"></div>
+																<span style="color: red;">	*ชื่อผู้ใช้โปรดระบุเป็นเลขบัตรประจำตัวประชาชน </span>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">รหัสผ่าน</label>
 																<div class="col-md-3">
 																<input id="mem_password" name="mem_password" type="text" placeholder="PASSWORD" class="form-control"></div>
+																<span style="color: red;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
 																</div>
                                 <!-- Form actions -->
                                 <div class="form-group">

@@ -54,13 +54,13 @@
                 </a>
             </li>
             <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
-                <a href="deposit.php">
+                <a href="admin_deposit_add.php">
                     <i class="fa fa-angle-double-right"></i>
                     ฝาก
                 </a>
             </li>
             <li <?php if($page == 'accordionformwizard') echo 'class="active" id="active"'; ?> >
-                <a href="buttonbuilder.php">
+                <a href="admin_withdraw_add.php">
                     <i class="fa fa-angle-double-right"></i>
                     ถอน
                 </a>

@@ -8,39 +8,41 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["id_committee"])) {
-		$id_committee = $_GET["id_committee"];
-		$sql = "SELECT * FROM committee
-		LEFT JOIN title
-		ON committee.id_title = title.id_title
-		LEFT JOIN position
-		ON committee.id_position = position.id_position
-		WHERE id_committee='$id_committee'
-		 ";
+if (isset($_GET["mem_id"])) {
+		$mem_id = $_GET["mem_id"];
+		$sql = "SELECT DISTINCT deposit.mem_id,
+		member.mem_name,
+		deposit.fak_date,
+		deposit.fak_sum,
+		deposit.withdraw,
+		deposit.fak_total,
+		commits.name_commit
+		FROM deposit LEFT JOIN member
+		ON deposit.mem_id = member.mem_id
+		LEFT JOIN commits
+		ON deposit.id_commit = commits.id_commit
+		ORDER BY deposit.mem_id asc
+		";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
-			$id_committee = $row["id_committee"];
-			$com_idcard = $row["com_idcard"];
-			$id_title = $row["title"];
-			$com_name = $row["com_name"];
-			$id_position = $row["name_position"];
-			$com_birthday = $row["com_birthday"];
-			$com_address = $row["com_address"];
-			$com_tel = $row["com_tel"];
-			$com_username = $row["com_username"];
-			$com_password = $row["com_password"];
+			$fak_id = $row["fak_id"];
+			$fak_date = $row["fak_date"];
+			$mem_id = $row["mem_id"];
+			$name_commit = $row["name_commit"];
+			$fak_sum = $row["fak_sum"];
+			$withdraw = $row["withdraw"];
+			$fak_total = $row["fak_total"];
+
 		}else{
-			$id_committee = "";
-			$com_idcard = "";
-			$id_title = "";
-			$com_name = "";
-			$id_position = "";
-			$com_birthday = "";
-			$com_address = "";
-			$com_tel = "";
-			$com_username = "";
-			$com_password = "";
+			$fak_id = "";
+			$fak_date = "";
+			$mem_id = "";
+			$name_commit = "";
+			$fak_sum = "";
+			$withdraw = "";
+			$fak_total = "";
+
 		}
 	}
 ?>
@@ -52,7 +54,7 @@ if (isset($_GET["id_committee"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          ข้อมูลกรรมการ
+          ข้อมูลผู้ดูแลระบบ
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -61,10 +63,10 @@ if (isset($_GET["id_committee"])) {
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลกรรมการ</a>
+                <a href="#">ข้อมูลการฝากเงินสัจจะออมทรัพย์</a>
             </li>
             <li class="active">
-                ข้อมูลกรรมการ
+                ข้อมูลการฝากเงินสัจจะออมทรัพย์
             </li>
         </ol>
     </section>
@@ -74,7 +76,7 @@ if (isset($_GET["id_committee"])) {
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h3 class="panel-title"> <i class="livicon" data-name="credit-card" data-size="20" data-loop="true" data-c="#fff" data-hc="#fff"></i>
-                      รายงานรายละเอียดข้อมูลกรรมการ
+                      รายงานรายละเอียดข้อมูลการฝากเงินสัจจะออมทรัพย์
                     </h3>
                 </div>
                 <div class="row">
@@ -83,18 +85,16 @@ if (isset($_GET["id_committee"])) {
 										</div> -->
 										<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
 												<div class="container">
-													<h2><?=$id_title?> <?=$com_name?><p></h2>
+													<h2><?=$fak_id?> <?=$mem_id?><p></h2>
 												</div>
-													<label class="col-md-5 control-label" for="id">รหัสกรรมการ</label><p><?=$id_committee?></p>
-													<label class="col-md-5 control-label" for="id">เลขที่บัตรประชาชน</label><p><?=$com_idcard?></p>
-													<label class="col-md-5 control-label" for="id">คำนำหน้าชื่อ</label><p><?=$id_title?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อ-สกุล</label><p><?=$com_name?></p>
-													<label class="col-md-5 control-label" for="id">ตำแหน่ง</label><p><?=$id_position?></p>
-													<label class="col-md-5 control-label" for="id">วันเกิด</label><p><?=$com_birthday?></p>
-													<label class="col-md-5 control-label" for="id">ที่อยู่</label><p><?=$com_address?></p>
-													<label class="col-md-5 control-label" for="id">เบอร์โทร</label><p><?=$com_tel?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้ใช้</label><p><?=$com_username?></p>
-													<label class="col-md-5 control-label" for="id">รหัสผ่าน</label><p><?=$com_password?></p>
+													<label class="col-md-5 control-label" for="id">รหัสการฝาก</label><p><?=$fak_id?></p>
+													<label class="col-md-5 control-label" for="id">วันที่ฝาก</label><p><?=$fak_date?></p>
+													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
+													<label class="col-md-5 control-label" for="id">ชื่อผู้รับฝาก</label><p><?=$name_commit?></p>
+													<label class="col-md-5 control-label" for="id">จำนวนเงินฝาก</label><p><?=$fak_sum?></p>
+													<label class="col-md-5 control-label" for="id">ยอดเงินฝากครั้งล่าสุด</label><p><?=$withdraw?></p>
+													<label class="col-md-5 control-label" for="id">รวมเงินฝากทั้งหมด</label><p><?=$fak_total?></p>
+
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">

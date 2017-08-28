@@ -10,17 +10,25 @@ require_once('include/_header.php');
 
 if (isset($_GET["mem_id"])) {
 		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT * FROM member WHERE mem_id ='$mem_id'";
+		$sql = "SELECT * FROM member
+						LEFT JOIN gender
+						ON member.id_gender = gender.id_gender
+						LEFT JOIN title
+						ON member.id_title = title.id_title
+						LEFT JOIN status
+						ON member.id_status = status.id_status
+						ORDER BY mem_id ASC
+		";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);
 			$mem_id = $row["mem_id"];
 			$mem_idcard = $row["mem_idcard"];
-			$id_gender = $row["id_gender"];
-			$id_title = $row["id_title"];
+			$id_gender = $row["gender_name"];
+			$id_title = $row["title"];
 			$mem_name = $row["mem_name"];
 			$mem_birthday = $row["mem_birthday"];
-			$id_status = $row["id_status"];
+			$id_status = $row["status_name"];
 			$mem_occupation = $row["mem_occupation"];
 			$mem_address =$row["mem_address"];
 			$mem_tel = $row["mem_tel"];

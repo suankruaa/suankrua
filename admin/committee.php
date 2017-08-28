@@ -82,7 +82,7 @@ require_once('include/_header.php');
                                         <th>ตำแหน่ง</th>
                                         <th>ที่อยู่</th>
                                         <th>เบอร์โทร</th>
-                                        <th>จัดการข้อมูล</th>
+                                        <th><div align ='center'>จัดการข้อมูล</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -93,13 +93,18 @@ require_once('include/_header.php');
 								$result = mysqli_query($link, $sql);
 							}
 
-							$sql = "select * from committee ";
+							$sql = "SELECT * FROM committee
+			        LEFT JOIN title
+    		      ON committee.id_title = title.id_title
+			        LEFT JOIN position
+		          ON committee.id_position = position.id_position
+			        ORDER BY id_committee ASC ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){
 								$id_committee = $row["id_committee"];
-                $id_title = $row["id_title"];
+                $id_title = $row["title"];
 								$com_name = $row["com_name"];
-								$id_position = $row["id_position"];
+								$id_position = $row["name_position"];
 								$com_address = $row["com_address"];
                 $com_tel = $row["com_tel"];
 
@@ -111,7 +116,7 @@ require_once('include/_header.php');
 										<td>$com_address</td>
                     <td>$com_tel</td>
 
-                    <td><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <td align='center'><a href='admin_committee_edit.php?id_committee=$id_committee' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_committee_view.php?id_committee=$id_committee' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
 										<a href='committee.php?id_committee=$id_committee' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";

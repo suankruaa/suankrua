@@ -61,18 +61,18 @@ require_once('include/_header.php');
           $result = mysqli_query($link, $sql);
         }
 
-        $sql = "select * from  member";
+        $sql = "SELECT * FROM  member LEFT JOIN title ON member.id_title=title.id_title";
         $result = mysqli_query($link, $sql);
         while ($row = mysqli_fetch_array($result)){
           $mem_id = $row["mem_id"];
-          $id_title = $row["id_title"];
+          $title = $row["title"];
           $mem_name = $row["mem_name"];
           $mem_birthday = $row["mem_birthday"];
           $mem_tel = $row["mem_tel"];
 
           echo "<tr>
               <td>$mem_id</td>
-              <td>$id_title</td>
+              <td>$title</td>
               <td>$mem_name</td>
               <td>$mem_birthday</td>
               <td>$mem_tel</td>

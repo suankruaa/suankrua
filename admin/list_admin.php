@@ -81,7 +81,7 @@ require_once('include/_header.php');
                                         <th>ชื่อ-สกุล</th>
                                         <th>username</th>
                                         <th>password</th>
-                                        <th>จัดการข้อมูล</th>
+                                        <th><div align ='center'>จัดการข้อมูล</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -106,7 +106,7 @@ require_once('include/_header.php');
 										<td>$username</td>
 										<td>$password</td>
 
-                    <td><a href='admin_admin_edit.php?id_admin=$id_admin' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <td align='center'><a href='admin_admin_edit.php?id_admin=$id_admin' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_admin_view.php?id_admin=$id_admin' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
                     <a href='list_admin.php?id_admin=$id_admin' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
                   </tr>";
