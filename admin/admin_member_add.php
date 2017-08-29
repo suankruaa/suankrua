@@ -24,12 +24,13 @@ if (isset($_POST["btnsubmit"])) {
 	$mem_email = $_POST["mem_email"];
 	$mem_username = $_POST["mem_username"];
 	$mem_password = $_POST["mem_password"];
+	$status_mem = $_POST["status_mem"];
 
 
 		$sql = "INSERT INTO member (mem_id,mem_idcard,id_gender,id_title,mem_name,mem_birthday,id_status,
-												mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password)
+												mem_occupation,mem_address,mem_tel,mem_email,mem_username,mem_password,status_mem)
 						VALUES('$mem_id','$mem_idcard','$id_gender','$id_title','$mem_name','$mem_birthday','$id_status',
-									 '$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$mem_password')";
+									 '$mem_occupation','$mem_address','$mem_tel','$mem_email','$mem_username','$mem_password','$status_mem')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -199,6 +200,19 @@ if (isset($_POST["btnsubmit"])) {
 																<input id="mem_password" name="mem_password" type="text" placeholder="PASSWORD" class="form-control"></div>
 																<span style="color: red;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
 																</div>
+
+																<?php if (isset($_SESSION['is_admin'])){ ?>
+																	<div class="form-group">
+																		<label class="col-lg-3 control-label" for="select">Status</label>
+																		<div class="col-lg-3">
+																			<select class="form-control" name="status_mem" id="select">
+																				<<option >--กรุณาเลือก--</option>
+																				<option value="publish" >สมาชิก</option>
+																				<option value="unpublish" >ยกเลิกเป็นสมาชิก</option>
+																			</select>
+																		</div>
+																	</div>
+																<?php } ?>
                                 <!-- Form actions -->
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">

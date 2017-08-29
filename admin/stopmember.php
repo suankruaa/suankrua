@@ -46,11 +46,11 @@ require_once('include/_header.php');
                               <tr role="row">
 
                                   <th>รหัสสมาชิก</th>
-                                  <th>คำนำหน้าชื่อ</th>
                                   <th>ชื่อ-สกุล</th>
+
                                   <th>วัน/เดือน/ปีเกิด</th>
                                   <th>เบอร์โทร</th>
-                                  <th>ยกเลิกบัญชี</th>
+                                  <th>สถานะ</th>
                               </tr>
                           </thead>
                           <tbody>
@@ -61,7 +61,7 @@ require_once('include/_header.php');
           $result = mysqli_query($link, $sql);
         }
 
-        $sql = "SELECT * FROM  member LEFT JOIN title ON member.id_title=title.id_title";
+        $sql = "SELECT * FROM  member LEFT JOIN title ON member.id_title=title.id_title WHERE status_mem = 'unpublish' ";
         $result = mysqli_query($link, $sql);
         while ($row = mysqli_fetch_array($result)){
           $mem_id = $row["mem_id"];
@@ -69,15 +69,16 @@ require_once('include/_header.php');
           $mem_name = $row["mem_name"];
           $mem_birthday = $row["mem_birthday"];
           $mem_tel = $row["mem_tel"];
+          $status_mem = $row["status_mem"];
 
           echo "<tr>
               <td>$mem_id</td>
-              <td>$title</td>
-              <td>$mem_name</td>
+              <td>$title $mem_name</td>
+
               <td>$mem_birthday</td>
               <td>$mem_tel</td>
-              <td>  <a href='stopmember.php?mem_id=$mem_id'><i class='livicon' data-name='user-flag' data-c='#01BC8C' data-hc='#01BC8C' data-size='18' title='restore'></i></a>  </td>
-
+              <td><i class='livicon' data-name='user-remove' data-c='#f56954' data-hc='#f56954' data-size='18'</i>$status_mem</td>
+              
             </tr>";
         }
       ?>

@@ -78,10 +78,12 @@ require_once('include/_header.php');
                                     <tr role="row">
 
                                         <th>รหัสสมาชิก</th>
-                                        <th>คำนำหน้าชื่อ</th>
                                         <th>ชื่อ-สกุล</th>
+
                                         <th>วัน/เดือน/ปีเกิด</th>
                                         <th>เบอร์โทร</th>
+                                        <th>สถานะ</th>
+
                                         <th><div align ='center'>จัดการข้อมูล</div></th>
                                     </tr>
                                 </thead>
@@ -108,13 +110,16 @@ require_once('include/_header.php');
 								$mem_name = $row["mem_name"];
 								$mem_birthday = $row["mem_birthday"];
                 $mem_tel = $row["mem_tel"];
+                $status_mem = $row["status_mem"];
+
 
 								echo "<tr>
 										<td>$mem_id</td>
-										<td>$id_title</td>
-										<td>$mem_name</td>
+										<td>$id_title $mem_name</td>
+
 										<td>$mem_birthday</td>
                     <td>$mem_tel</td>
+                    <td>$status_mem</td>
 
                     <td align='center'><a href='admin_member_edit.php?mem_id=$mem_id' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_member_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |

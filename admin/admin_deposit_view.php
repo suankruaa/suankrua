@@ -8,45 +8,6 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 
-if (isset($_GET["mem_id"])) {
-		$mem_id = $_GET["mem_id"];
-		$sql = "SELECT DISTINCT deposit.mem_id,
-		member.mem_name,
-		deposit.fak_id,
-		deposit.fak_date,
-		deposit.fak_sum,
-		deposit.withdraw,
-		deposit.fak_total,
-		commits.name_commit
-		FROM deposit LEFT JOIN member
-		ON deposit.mem_id = member.mem_id
-		LEFT JOIN commits
-		ON deposit.id_commit = commits.id_commit
-		ORDER BY deposit.mem_id asc
-		";
-		$result = mysqli_query($link, $sql);
-		if (mysqli_num_rows($result) > 0) {
-			$row = mysqli_fetch_array($result);
-			$fak_id = $row["fak_id"];
-			$fak_date = $row["fak_date"];
-			$mem_id = $row["mem_id"];
-			$name_commit = $row["name_commit"];
-			$fak_sum = $row["fak_sum"];
-			$withdraw = $row["withdraw"];
-			$fak_total = $row["fak_total"];
-			$mem_name = $row["mem_name"];
-
-		}else{
-			$fak_id = "";
-			$fak_date = "";
-			$mem_id = "";
-			$name_commit = "";
-			$fak_sum = "";
-			$withdraw = "";
-			$fak_total = "";
-			$mem_name = "";
-		}
-	}
 ?>
 
 
@@ -85,20 +46,69 @@ if (isset($_GET["mem_id"])) {
 									<!-- <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
 												<img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
 										</div> -->
-										<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
-												<div class="container">
-													<h2><?=$fak_id?> <?=$mem_name?><p></h2>
-												</div>
-													<label class="col-md-5 control-label" for="id">รหัสการฝาก</label><p><?=$fak_id?></p>
-													<label class="col-md-5 control-label" for="id">วันที่ฝาก</label><p><?=$fak_date?></p>
-													<label class="col-md-5 control-label" for="id">รหัสสมาชิก</label><p><?=$mem_id?></p>
-													<label class="col-md-5 control-label" for="id">ชื่อผู้รับฝาก</label><p><?=$name_commit?></p>
-													<label class="col-md-5 control-label" for="id">จำนวนเงินฝาก</label><p><?=$fak_sum?></p>
-													<label class="col-md-5 control-label" for="id">ยอดเงินฝากครั้งล่าสุด</label><p><?=$withdraw?></p>
-													<label class="col-md-5 control-label" for="id">รวมเงินฝากทั้งหมด</label><p><?=$fak_total?></p>
-													<label class="col-md-5 control-label" for="id">รวมเงินฝากทั้งหมด</label><p><?=$mem_name?></p>
+										<div class="col-md-12">
+											<table class="table table-striped">
+													<thead>
+														<tr>
+															<th>รหัสการฝาก</th>
+															<th>วันที่ฝาก</th>
+															<th>รหัสสมาชิก</th>
+															<th>ชื่อผู้ฝาก</th>
+															<th>ชื่อผู้รับฝาก</th>
+															<th>เงินฝาก</th>
+															<th>ถอน</th>
+															<th>ยอดเงินคงเหลือ</th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
 
+														if (isset($_GET["mem_id"])) {
+																$mem_id = $_GET["mem_id"];
+																$sql = "SELECT DISTINCT deposit.mem_id,
+																member.mem_name,
+																deposit.fak_id,
+																deposit.fak_date,
+																deposit.fak_sum,
+																deposit.withdraw,
+																deposit.fak_total,
+																commits.name_commit
+																FROM deposit LEFT JOIN member
+																ON deposit.mem_id = member.mem_id
+																LEFT JOIN commits
+																ON deposit.id_commit = commits.id_commit WHERE deposit.mem_id = '$mem_id'
+																ORDER BY deposit.mem_id asc";
+																$result = mysqli_query($link, $sql);
+																while ($row = mysqli_fetch_array($result)) {
+																	$fak_id = $row["fak_id"];
+																	$fak_date = $row["fak_date"];
+																	$mem_id1 = $row["mem_id"];
+																	$name_commit = $row["name_commit"];
+																	$fak_sum = $row["fak_sum"];
+																	$withdraw = $row["withdraw"];
+																	$fak_total = $row["fak_total"];
+																	$mem_name = $row["mem_name"];
+
+																	echo "<tr>
+																	 		<td>$fak_id</td>
+																			<td>$fak_date</td>
+																			<td>$mem_id</td>
+																			<td>$mem_name</td>
+																			<td>$name_commit</td>
+																			<td>$fak_sum</td>
+																			<td>$withdraw</td>
+																			<td>$fak_total</td>
+																	</tr>";
+
+																}
+															}
+														 ?>
+														<tr>
+
+													</tbody>
+											</table>
 										</div>
+
                     <div class="pull-right" style="margin:10px 20px;">
                         <button type="button" class="btn btn-responsive button-alignment btn-info" data-toggle="button">
                         <a style="color:#fff;" onclick="javascript:window.print();">Print<i class="livicon" data-name="printer" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i></a>

@@ -12,7 +12,6 @@ EOT;
 require_once('include/_header.php');
 
 if (isset($_POST["btnsubmit"])) {
-		$fak_id = $_POST["fak_id"];
 		$fak_date = $_POST["fak_date"];
 		$mem_id = $_POST["mem_id"];
 		$mem_name = $_POST["mem_name"];
@@ -22,8 +21,8 @@ if (isset($_POST["btnsubmit"])) {
 		$fak_total = $_POST["fak_total"];
 
 
-		$sql = "INSERT INTO deposit (fak_id,fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
-		VALUES('$fak_id','$fak_date','$mem_id','$id_commit','$fak_sum','$withdraw','$fak_total')";
+		$sql = "INSERT INTO deposit (fak_date,mem_id,id_commit,fak_sum,withdraw,fak_total)
+		VALUES('$fak_date','$mem_id','$id_commit','','$withdraw','$fak_total')";
 		$result = mysqli_query($link, $sql);
 		if ($result) {
 			echo "<script type='text/javascript'>";
@@ -32,7 +31,7 @@ if (isset($_POST["btnsubmit"])) {
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
-			die("Query Failed" . mysqli_error($conn));
+			die("Query Failed" . mysqli_error($link));
 			// echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}
@@ -119,7 +118,7 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">จำนวนเงินที่ต้องการถอน</label>
 																<div class="col-md-3">
-																<input id="fak_sum" name="fak_sum" type="text" placeholder="RECIVER" class="form-control"></div>
+																<input id="fak_sum" name="withdraw" type="text" placeholder="RECIVER" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
