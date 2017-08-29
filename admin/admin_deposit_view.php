@@ -12,6 +12,7 @@ if (isset($_GET["mem_id"])) {
 		$mem_id = $_GET["mem_id"];
 		$sql = "SELECT DISTINCT deposit.mem_id,
 		member.mem_name,
+		deposit.fak_id,
 		deposit.fak_date,
 		deposit.fak_sum,
 		deposit.withdraw,
@@ -33,6 +34,7 @@ if (isset($_GET["mem_id"])) {
 			$fak_sum = $row["fak_sum"];
 			$withdraw = $row["withdraw"];
 			$fak_total = $row["fak_total"];
+			$mem_name = $row["mem_name"];
 
 		}else{
 			$fak_id = "";
@@ -42,7 +44,7 @@ if (isset($_GET["mem_id"])) {
 			$fak_sum = "";
 			$withdraw = "";
 			$fak_total = "";
-
+			$mem_name = "";
 		}
 	}
 ?>
@@ -54,7 +56,7 @@ if (isset($_GET["mem_id"])) {
     <section class="content-header">
         <!--section starts-->
         <h1>
-          ข้อมูลผู้ดูแลระบบ
+          ข้อมูลการฝาก
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -85,7 +87,7 @@ if (isset($_GET["mem_id"])) {
 										</div> -->
 										<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
 												<div class="container">
-													<h2><?=$fak_id?> <?=$mem_id?><p></h2>
+													<h2><?=$fak_id?> <?=$mem_name?><p></h2>
 												</div>
 													<label class="col-md-5 control-label" for="id">รหัสการฝาก</label><p><?=$fak_id?></p>
 													<label class="col-md-5 control-label" for="id">วันที่ฝาก</label><p><?=$fak_date?></p>
@@ -94,6 +96,7 @@ if (isset($_GET["mem_id"])) {
 													<label class="col-md-5 control-label" for="id">จำนวนเงินฝาก</label><p><?=$fak_sum?></p>
 													<label class="col-md-5 control-label" for="id">ยอดเงินฝากครั้งล่าสุด</label><p><?=$withdraw?></p>
 													<label class="col-md-5 control-label" for="id">รวมเงินฝากทั้งหมด</label><p><?=$fak_total?></p>
+													<label class="col-md-5 control-label" for="id">รวมเงินฝากทั้งหมด</label><p><?=$mem_name?></p>
 
 										</div>
                     <div class="pull-right" style="margin:10px 20px;">

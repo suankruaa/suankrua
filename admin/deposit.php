@@ -63,7 +63,6 @@ require_once('include/_header.php');
                                         <th>ฝาก</th>
                                         <th>ถอน</th>
                                         <th>ยอดเงินคงเหลือ</th>
-
                                         <th>ดูข้อมูล</th>
 
                                     </tr>
