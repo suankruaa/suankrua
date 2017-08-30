@@ -28,7 +28,7 @@ require_once('include/_header.php');
 			$id_committee = $POST["id_committee"];
 			$com_name = $POST["com_name"];
 
-			$sql = "INSERT INTO fund (pro_id,mem_id,mem_name,mem_idcard,app_id,app_pice,app_date,pro_date,pro_number,pro_pice,
+			$sql = "INSERT INTO promise (pro_id,mem_id,mem_name,mem_idcard,app_id,app_pice,app_date,pro_date,pro_number,pro_pice,
 																pro_idcardBM1,pro_idcardBM2,pro_nameBM1,pro_nameBM2,pro_redate,pro_statusBM,id_committee,com_name)
 							VALUES('$pri_id','$mem_id','$mem_name','$mem_idcard','$app_id','$app_pice','$app_date','$pro_date','$pro_number','$pro_pice',
 										 '$pro_idcardBM1','$pro_idcardBM2','$pro_nameBM1','$pro_nameBM2','$pro_redate','$pro_statusBM','$pro_Document','$id_committee','$com_name')";

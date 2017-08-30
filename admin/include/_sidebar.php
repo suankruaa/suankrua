@@ -93,14 +93,14 @@
                     อนุมัติเงินกู้
                 </a>
             </li>
-            <li <?php if($page == 'validation') echo 'class="active" id="active"'; ?> >
+            <li <?php if($page == 'promise') echo 'class="active" id="active"'; ?> >
                 <a href="promise.php">
                     <i class="fa fa-angle-double-right"></i>
                     ทำสัญญากู้ยืมเงิน
                 </a>
             </li>
-            <li <?php if($page == 'formelements') echo 'class="active" id="active"'; ?> >
-                <a href="formelements.php">
+            <li <?php if($page == 'repayment') echo 'class="active" id="active"'; ?> >
+                <a href="repayment.php">
                     <i class="fa fa-angle-double-right"></i>
                     จ่ายเงินกู้
                 </a>

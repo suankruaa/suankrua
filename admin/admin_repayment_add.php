@@ -8,21 +8,21 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 	if (isset($_POST["btnsubmit"])) {
-			$sub_id = $POST["sub_id"];
+			$pay_id = $POST["pay_id"];
 			$mem_id = $POST["mem_id"];
 			$mem_name = $POST["mem_name"];
-			$sub_moneyloan = $POST["sub_moneyloan"];
-			$sub_objective = $POST["sub_objective"];
-			$sub_date = $POST["sub_date"];
-			$sub_idcardBM1 = $POST["sub_idcardBM1"];
-			$sub_status1 = $POST["sub_status1"];
-			$sub_idcardBM2 = $POST["sub_idcardBM2"];
-			$sub_status2 = $POST["sub_status2"];
+			$mem_idcard = $POST["mem_idcard"];
+			$pro_id = $POST["pro_id"];
+			$pro_number = $POST["pro_number"];
+			$pro_pice = $POST["pro_pice"];
+			$date_sent = $POST["date_sent"];
+			$pay_date = $POST["pay_date"];
+			$pay_pice = $POST["pay_pice"];
 			$id_committee = $POST["id_committee"];
 			$com_name = $POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,sub_status1,sub_idcardBM2,sub_status2,id_committee,com_name)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$sub_status1','$sub_idcardBM2','$sub_status2','$id_committee','$com_name')";
+			$sql = "INSERT INTO repayment (pay_id,mem_id,mem_name,mem_idcard,pro_id,pro_number,pro_pice,date_sent,pay_date,pay_pice,id_committee,com_name)
+							VALUES('$pay_id','$mem_id','$mem_name','$mem_idcard','$pro_id','$pro_number','$pro_pice','$date_sent','$pay_date','$pay_pice','$id_committee','$com_name')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
@@ -34,14 +34,12 @@ require_once('include/_header.php');
 			}
 		}
 ?>
-
-
 <aside class="right-side">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <!--section starts-->
         <h1>
-            เพิ่มข้อมูลการยื่นกู้กองทุน
+            เพิ่มข้อมูลการจ่ายเงินกู้ให้ผู้กู้
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -50,10 +48,10 @@ require_once('include/_header.php');
                 </a>
             </li>
             <li>
-                <a href="#">ข้อมูลการยื่นกู้กองทุน</a>
+                <a href="#">ข้อมูลการจ่ายเงินกู้ให้ผู้กู้</a>
             </li>
             <li class="active">
-                เพิ่มข้อมูลการยื่นกองทุน
+                เพิ่มข้อมูลการจ่ายเงินกู้ให้ผู้กู้
             </li>
         </ol>
     </section>
@@ -68,7 +66,7 @@ require_once('include/_header.php');
                 <div class="panel panel-success" id="hidepanel1">
 									<div class="panel-heading">
 											<h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
-													เพิ่มการยื่นกู้
+													เพิ่มการจ่ายเงินกู้ให้ผู้กู้
 											</h3>
 										</div>
                     <div class="panel-body">
@@ -76,13 +74,13 @@ require_once('include/_header.php');
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="id">รหัสการยื่นกู้</label>
+                                    <label class="col-md-3 control-label" for="id">รหัสการจ่ายเงินกู้</label>
                                     <div class="col-md-3">
-                                    <input id="sub_id" name="sub_id" type="text" placeholder="ID" class="form-control"></div>
+                                    <input id="pay_id" name="pay_id" type="text" placeholder="ID" class="form-control"></div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">รหัสสมาชิก</label>
+                                    <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
                                     <div class="col-md-3">
                                     <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
                                 </div>
@@ -94,50 +92,55 @@ require_once('include/_header.php');
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="name">จำนวนเงินที่ขอกู้</label>
+                                    <label class="col-md-3 control-label" for="idcard">เลขที่บัตรประชาชนสมาชิก</label>
                                     <div class="col-md-3">
-                                    <input id="sub_moneyloan" name="sub_moneyloan" type="text" placeholder="MONEY" class="form-control"></div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="detail">วัตถุประสงค์ในการกู้</label>
-                                    <div class="col-md-4">
-                                    <textarea class="form-control" id="sub_objective" name="sub_objective" placeholder="OBJECTIVE" rows="5"></textarea>
-                                    </div>
+                                    <input id="mem_idcard" name="mem_idcard" type="text" placeholder="MEM-IDCARD" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="birth">วันที่ยื่นกู้</label>
-																<div class="col-md-3">
-																<input type="date" id="datepicker" name="sub_date" class="form-control round-form"  placeholder="DATE"></div>
+																		<label class="col-md-3 control-label" for="id">รหัสการทำสัญญา</label>
+																		<div class="col-md-3">
+																		<input id="pro_id" name="pro_id" type="text" placeholder="PRO-ID" class="form-control"></div>
 																</div>
 
-                                <div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 1</label>
+																<div class="form-group">
+                                    <label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
                                     <div class="col-md-3">
-                                    <input id="sub_idcardBM1" name="sub_idcardBM1" type="text" placeholder="IDCARDBM1" class="form-control"></div>
+                                    <input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">สถานะผู้ค้ำคนที่ 1</label>
+                                    <label class="col-md-3 control-label" for="number">จำนวนเงินกู้</label>
                                     <div class="col-md-3">
-                                    <input id="sub_status1" name="sub_status1" type="text" placeholder="STATUS1" class="form-control"></div>
+                                    <input id="pro_pice" name="pro_pice" type="text" placeholder="MONEY" class="form-control"></div>
                                 </div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">เลขที่บัตร ปชช.ผู้ค้ำคนที่ 2</label>
-                                    <div class="col-md-3">
-                                    <input id="sub_idcardBM2" name="sub_idcardBM2" type="text" placeholder="IDCARDBM2" class="form-control"></div>
-                                </div>
+																<label class="col-md-3 control-label" for="date">วันที่ครบกำหนดส่ง</label>
+																<div class="col-md-3">
+																<input type="date" id="datepicker" name="date_sent" class="form-control round-form"  placeholder="DATE"></div>
+																</div>
 
 																<div class="form-group">
-                                    <label class="col-md-3 control-label" for="money">สถานะผู้ค้ำคนที่ 2</label>
-                                    <div class="col-md-3">
-                                    <input id="sub_status2" name="sub_status2" type="text" placeholder="STATUS2" class="form-control"></div>
-                                </div>
+																		<label class="col-md-3 control-label" for="number">เลขที่สัญญา</label>
+																		<div class="col-md-3">
+																		<input id="pro_number" name="pro_number" type="text" placeholder="PRO-NUMBER" class="form-control"></div>
+																</div>
 
 																<div class="form-group">
-																	<label class="col-md-3 control-label" for="detail">ชื่อกรรมการ</label>
+																<label class="col-md-3 control-label" for="date">วันที่จ่ายเงินกู้</label>
+																<div class="col-md-3">
+																<input type="date" id="datepicker" name="pay_date" class="form-control round-form"  placeholder="DATE"></div>
+																</div>
+
+																<div class="form-group">
+																		<label class="col-md-3 control-label" for="money">จำนวนเงินที่จ่าย</label>
+																		<div class="col-md-3">
+																		<input id="pay_pice" name="pay_pice" type="text" placeholder="MONEY" class="form-control"></div>
+																</div>
+
+																<div class="form-group">
+																	<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
 																	<div class="col-md-3">
 																<select class="form-control" name="id_commit" id="id_commit">
 																				<option>--เลือก--</option>
