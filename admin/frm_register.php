@@ -48,6 +48,10 @@
                                 <button class="btn btn-lg btn-primary btn-block" value="Login" type="submit">Sign Up</button>
                             </fieldset>
                         </form><br />
+                        <span style="color:red">**หมายเหตุ**</span><br />
+                        <span style="font-size: 80%;">	*ชื่อผู้ใช้โปรดระบุเป็นเลขบัตรประจำตัวประชาชน </span><br />
+                        <span style= "font-size: 80%;">	*รหัสผ่านโปรดระบุเป็นวันเดือนปีเกิด เช่น 1 ม.ค. 2538 เป็น 01012538 </span>
+
                         <a href="index.php">กลับหน้าหลัก</a>
                     </div>
                 </div>

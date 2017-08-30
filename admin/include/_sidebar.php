@@ -82,7 +82,7 @@
         </a>
         <ul class="sub-menu">
             <li <?php if($page == 'form_examples') echo 'class="active" id="active"'; ?> >
-                <a href="form_examples.php">
+                <a href="submitted.php">
                     <i class="fa fa-angle-double-right"></i>
                     ยื่นกู้
                 </a>
@@ -94,7 +94,7 @@
                 </a>
             </li>
             <li <?php if($page == 'validation') echo 'class="active" id="active"'; ?> >
-                <a href="validation.php">
+                <a href="promise.php">
                     <i class="fa fa-angle-double-right"></i>
                     ทำสัญญากู้ยืมเงิน
                 </a>

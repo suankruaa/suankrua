@@ -67,7 +67,7 @@ if (isset($_POST["btnsubmit"])) {
             <div class="col-lg-12">
                 <!--lg-6 starts-->
                 <!--basic form starts-->
-                <div class="panel panel-primary" id="hidepanel1">
+                <div class="panel panel-danger" id="hidepanel1">
 									<div class="panel-heading">
 											<h3 class="panel-title"> <i class="livicon" data-name="plus" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
 													เพิ่มการถอน
@@ -136,7 +136,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ถอน</button>
+                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-danger">ถอน</button>
                                     </div>
                                 </div>
                             </fieldset>

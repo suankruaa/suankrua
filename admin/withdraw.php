@@ -63,9 +63,7 @@ require_once('include/_header.php');
                                         <th>ฝาก</th>
                                         <th>ถอน</th>
                                         <th>ยอดเงินคงเหลือ</th>
-
-                                        <th>ดูข้อมูล</th>
-
+                                        <th><div align ='center'>ดูข้อมูล</div></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,7 +106,7 @@ require_once('include/_header.php');
                     <td>$withdraw</td>
                     <td>$fak_total</td>
 
-                    <td><a href='admin_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
+                    <td align='center'><a href='admin_deposit_view.php?mem_id=$mem_id' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a></td>
 									</tr>";
 							}
 						?>
