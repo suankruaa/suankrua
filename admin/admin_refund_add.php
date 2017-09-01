@@ -174,7 +174,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                     <div class="col-md-12 text-right">
 
-                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ฝาก</button>
+                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">บันทึก</button>
                                     </div>
                                 </div>
                             </fieldset>
