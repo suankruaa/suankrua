@@ -39,6 +39,21 @@ if (isset($_POST["btnsubmit"])) {
 			// echo "<font color='red'>SQL Error</font><hr>";
 		}
 	}
+
+	if ($_POST['mem_name']) {
+		$row_num = $_POST[row_num];
+
+			$result= mysqli_query($link,"SELECT * FROM member WHERE mem_name LIKE ' ".strtoupper($_POST['mem_id'])."%'");
+			$date = array();
+			while ($row = mysqli_fetch_assoc($result)){
+				$name = $row[''].'|'.$row[''].'|'.$row_num;
+			}
+			echo json_encode($date);
+
+			// $result = ($link, $sql);
+			// while ($row=mysqli_fetch_array($result)){
+
+	}
 ?>
 
 
@@ -78,7 +93,7 @@ if (isset($_POST["btnsubmit"])) {
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="#" method="post">
+                        <form class="form-horizontal" action="admin_deposit_add.php" method="post" name="fak" id="fak" method="post">
                             <fieldset>
                                 <!-- Name input-->
 
@@ -173,32 +188,63 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
-
 <script type="text/javascript">
-	$(function(){
-	 var availableTags = [
-	      <?php
-
-	      	$sql = "SELECT mem_name FROM member ORDER BY mem_name ASC";
-			$result = mysqli_query($link, $sql);
-			$name = '';
-			while($row = mysqli_fetch_array($result)){
-				$name .=  '"' . $row['mem_name'] . '",' ;
-			}
-
-			echo $name;
-	      ?>
-	    ];
-
-	    $("#mem_name").autocomplete({
-	      source: availableTags
-	    });
-
-	    $("span[role='status']").remove();
-
-
-		$("#fak").keyup(function(){
-			$("#fak_total_new").val(parseFloat($(this).val()) + parseFloat($("#fak_total").val()));
-		});
+	$('#mem_name').autocomplete({
+		source: function( request, response){
+			$.ajax({
+				url : 'ajax.pjp',
+				dataType: "json",
+				data: {
+					name_startsWith : request.term,
+					type : 'fund',
+					row_num : 1
+				},
+				success: function(data){
+					response( $.map(data, function ( item ){
+						var code = item.spit("|");
+						return {
+							label: code[0],
+							value: code[0],
+							data : item
+						}
+					}));
+				}
+			});
+		},
+		autoFocus: true,
+		minlength 0,
+		select: function (event, ui){
+			var names = ui.item.data.spit("|");
+			#('#mem_name').va;(names[1]);
+			#('#mem_id').va;(names[2]);
+		}
 	});
+</script>
+<script type="text/javascript">
+	// $(function(){
+	//  var availableTags = [
+	//     <?php
+	//
+	//     $sql = "SELECT mem_name FROM member ORDER BY mem_name ASC";
+	// 		$result = mysqli_query($link, $sql);
+	// 		$name = '';
+	// 		while($row = mysqli_fetch_array($result)){
+	// 			$name .=  '"' . $row['mem_name'] . '",' ;
+	// 		}
+	//
+	// 		echo $name;
+	//       ?>
+	//     ];
+	//
+	//     $("#mem_name").autocomplete({
+	//       source: availableTags
+	//     });
+	//
+	//     $("span[role='status']").remove();
+	//
+	//
+	// 	$("#fak").keyup(function(){
+	// 		$("#fak_total_new").val(parseFloat($(this).val()) + parseFloat($("#fak_total").val()));
+	// 	});
+	// });
 </script>
