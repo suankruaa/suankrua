@@ -2,8 +2,11 @@
 $page = 'Admin';
 $title = 'Hello admin';
 $css = <<<EOT
+
 <!--page level css -->
-<!--page level css -->
+<link href="asset/vendors/datatables/css/jquery-ui.css" rel = "stylesheet">
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/jquery-1.10.2.js" />
+<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/jquery-ui.js" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
 <link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
@@ -161,7 +164,12 @@ require_once('deposit.php');
 require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
-<script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<script src = "asset/vendors/datatables/css/jquery-ui.css" rel = "stylesheet"></script>
+<script src = "asset/vendors/datatables/css/jquery-1.10.2.js"></script>
+<script src = "asset/vendors/datatables/css/jquery-ui.js"></script>
+<script src = "asset/vendors/datatables/css/select2.css" rel="stylesheet" type="text/css"></script>
+<script src = "asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
+<script src = "asset/css/pages/tables.css" rel="stylesheet" type="text/css" ></script>
 <!-- end of page level js -->
 </body>
 </html>
