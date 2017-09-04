@@ -41,7 +41,7 @@ if (isset($_POST["btnEdit"])) {
 		}
 	}else{
 		$mem_id = $_GET["mem_id"];
-		$sql = "select * from member where mem_id='$mem_id'";
+		$sql = "SELECT * FROM member WHERE mem_id='$mem_id'";
 		$result = mysqli_query($link, $sql);
 		if (mysqli_num_rows($result) > 0) {
 			$row = mysqli_fetch_array($result);

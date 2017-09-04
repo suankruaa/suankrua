@@ -101,14 +101,7 @@ require_once('include/_header.php');
 								$mem_id = $row["mem_id"];
 								$mem_name = $row["mem_name"];
 								$sub_moneyloan = $row["sub_moneyloan"];
-                //$sub_objective = $row["sub_objective"];
                 $sub_date = $row["sub_date"];
-                //$sub_idcardBM1 = $row["sub_idcardBM1"];
-                //$sub_status1 = $row["sub_status1"];
-                //$sub_idcardBM2 = $row["sub_idcardBM2"];
-                //$sub_status2 = $row["sub_status2"];
-                //$id_committee = $row["id_committee"];
-                //$com_name = $row["com_name"];
 
 								echo "<tr>
 										<td>$sub_id</td>

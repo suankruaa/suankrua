@@ -106,7 +106,7 @@ require_once('include/_header.php');
 										<td>$fund_name</td>
 										<td>$fund_detail</td>
 										<td>$fund_money</td>
-                    <td align='center'><a href='admin_funds_edit.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
+                    <td align='center'><a href='admin_fund_edit.php?id_fund=$id_fund' class='btn default btn-xs purple'><i class='fa fa-edit'></i></a> |
                     <a href='admin_fund_view.php?id_fund=$id_fund' class='btn info btn-xs purple'><i class='fa fa-eye'></i></a> |
 										<a href='funds.php?id_fund=$id_fund' class='btn warning btn-xs purple'><i class='fa fa-trash-o' onclick='return confirm(\"ยืนยันการลบ\");'></a></td>
 									</tr>";

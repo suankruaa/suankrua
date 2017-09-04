@@ -8,26 +8,26 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 	if (isset($_POST["btnsubmit"])) {
-			$sub_id = $POST["sub_id"];
-			$mem_id = $POST["mem_id"];
-			$mem_name = $POST["mem_name"];
-			$sub_moneyloan = $POST["sub_moneyloan"];
-			$sub_objective = $POST["sub_objective"];
-			$sub_date = $POST["sub_date"];
-			$sub_idcardBM1 = $POST["sub_idcardBM1"];
-			$sub_status1 = $POST["sub_status1"];
-			$sub_idcardBM2 = $POST["sub_idcardBM2"];
-			$sub_status2 = $POST["sub_status2"];
-			$id_committee = $POST["id_committee"];
-			$com_name = $POST["com_name"];
+			$sub_id = $_POST["sub_id"];
+			$mem_id = $_POST["mem_id"];
+			$mem_name = $_POST["mem_name"];
+			$sub_moneyloan = $_POST["sub_moneyloan"];
+			$sub_objective = $_POST["sub_objective"];
+			$sub_date = $_POST["sub_date"];
+			$sub_idcardBM1 = $_POST["sub_idcardBM1"];
+			$sub_status1 = $_POST["sub_status1"];
+			$sub_idcardBM2 = $_POST["sub_idcardBM2"];
+			$sub_status2 = $_POST["sub_status2"];
+			$id_commit = $_POST["id_commit"];
+			//$com_name = $_POST["com_name"];
 
-			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,sub_status1,sub_idcardBM2,sub_status2,id_committee,com_name)
-							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$sub_status1','$sub_idcardBM2','$sub_status2','$id_committee','$com_name')";
+			$sql = "INSERT INTO submitted (sub_id,mem_id,mem_name,sub_moneyloan,sub_objective,sub_date,sub_idcardBM1,sub_status1,sub_idcardBM2,sub_status2,id_commit)
+							VALUES('$sub_id','$mem_id','$mem_name','$sub_moneyloan','$sub_objective','$sub_date','$sub_idcardBM1','$sub_status1','$sub_idcardBM2','$sub_status2','$id_commit')";
 			$result = mysqli_query($link, $sql);
 			if ($result) {
 				echo "<script type='text/javascript'>";
 				echo "alert('เพิมเสร็จแล้ว');";
-				echo "window.location='funds.php';";
+				echo "window.location='submitted.php';";
 				echo "</script>";
 			}else{
 				die("Query Failed" . mysqli_error($link));
@@ -72,7 +72,7 @@ require_once('include/_header.php');
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_fund_add.php" method="post">
+                        <form class="form-horizontal" action="admin_submitted_add.php" method="post">
                             <fieldset>
                                 <!-- Name input-->
                                 <div class="form-group">
@@ -137,7 +137,7 @@ require_once('include/_header.php');
                                 </div>
 
 																<div class="form-group">
-																	<label class="col-md-3 control-label" for="detail">ชื่อกรรมการ</label>
+																	<label class="col-md-3 control-label" for="name">ชื่อกรรมการ</label>
 																	<div class="col-md-3">
 																<select class="form-control" name="id_commit" id="id_commit">
 																				<option>--เลือก--</option>
