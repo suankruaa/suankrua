@@ -86,7 +86,7 @@ require_once('include/_header.php');
               ON deposit.mem_id = member.mem_id
               left JOIN commits
               ON deposit.id_commit = commits.id_commit
-              order by deposit.mem_id asc
+              ORDER BY deposit.fak_date DESC
               ";
 							$result = mysqli_query($link, $sql);
 							while ($row = mysqli_fetch_array($result)){

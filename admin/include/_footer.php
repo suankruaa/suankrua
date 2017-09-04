@@ -3,12 +3,8 @@
 </a>
 <!-- global js -->
 <script src="asset/js/jquery-1.11.1.min.js" type="text/javascript"></script>
-<?php
-if(($page == 'form_builder2') || ($page == 'gridmanager') || ($page == 'portlet_draggable'))
-{
-    echo '<script src="asset/vendors/form_builder1/js/jquery.ui.min.js"></script>';
-}
-?>
+<script src="asset/vendors/form_builder1/js/jquery.ui.min.js"></script>
+
 <script src="asset/js/bootstrap.min.js" type="text/javascript"></script>
 <!--livicons-->
 <script src="asset/vendors/livicons/minified/raphael-min.js" type="text/javascript"></script>

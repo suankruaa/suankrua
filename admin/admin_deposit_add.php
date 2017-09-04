@@ -88,7 +88,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
                                 <div class="col-md-3">
-                                <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
+                                <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
@@ -119,19 +119,19 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">จำนวนเงินฝาก</label>
 																<div class="col-md-3">
-																<input id="fak_sum" name="fak_sum" type="text" placeholder="RECIVER" class="form-control"></div>
+																<input id="fak" name="fak_sum" type="text" placeholder="RECIVER" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">รวมเงินฝากครั้งล่าสุด</label>
+																<label class="col-md-3 control-label" for="pass">ยอดยกมา</label>
 																<div class="col-md-3">
-																<input id="fak_total" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly></div>
+																<input id="fak_total" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly value="100"></div>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">รวมเป็นเงิน</label>
 																<div class="col-md-3">
-																<input id="fak_total" name="fak_total" type="text" placeholder="TOTAL" class="form-control"></div>
+																<input id="fak_total_new" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly value=""></div>
 																</div>
 																                      <!-- Form actions -->
                                 <div class="form-group">
@@ -165,3 +165,32 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+
+<script type="text/javascript">
+	$(function(){
+	 var availableTags = [
+	      <?php
+
+	      	$sql = "SELECT mem_name FROM member ORDER BY mem_name ASC";
+			$result = mysqli_query($link, $sql);
+			$name = '';
+			while($row = mysqli_fetch_array($result)){
+				$name .=  '"' . $row['mem_name'] . '",' ;
+			}
+
+			echo $name;
+	      ?>
+	    ];
+
+	    $("#mem_name").autocomplete({
+	      source: availableTags
+	    });
+
+	    $("span[role='status']").remove();
+
+
+		$("#fak").keyup(function(){
+			$("#fak_total_new").val(parseFloat($(this).val()) + parseFloat($("#fak_total").val()));
+		});
+	});
+</script>

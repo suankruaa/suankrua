@@ -61,7 +61,8 @@ require_once('include/_header.php');
           $result = mysqli_query($link, $sql);
         }
 
-        $sql = "SELECT * FROM  member LEFT JOIN title ON member.id_title=title.id_title WHERE status_mem = 'unpublish' ";
+        $sql = "SELECT * FROM  member
+                LEFT JOIN title ON member.id_title=title.id_title WHERE status_mem = 'unpublish' ";
         $result = mysqli_query($link, $sql);
         while ($row = mysqli_fetch_array($result)){
           $mem_id = $row["mem_id"];
@@ -78,7 +79,7 @@ require_once('include/_header.php');
               <td>$mem_birthday</td>
               <td>$mem_tel</td>
               <td><i class='livicon' data-name='user-remove' data-c='#f56954' data-hc='#f56954' data-size='18'</i>$status_mem</td>
-              
+
             </tr>";
         }
       ?>
