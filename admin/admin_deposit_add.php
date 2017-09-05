@@ -4,16 +4,18 @@ $title = 'Hello admin';
 $css = <<<EOT
 
 <!--page level css -->
-<link href="asset/vendors/datatables/css/jquery-ui.css" rel = "stylesheet">
-<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/jquery-1.10.2.js" />
-<link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/jquery-ui.js" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/select2.css" />
 <link rel="stylesheet" type="text/css" href="asset/vendors/datatables/css/dataTables.bootstrap.css" />
 <link href="asset/css/pages/tables.css" rel="stylesheet" type="text/css" />
+
 <!--end of page level css--><!--end of page level css-->
 EOT;
 require_once('include/_header.php');
-
+?>
+<script type="text/javascript"  src="asset/js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<?php
 if (isset($_POST["btnsubmit"])) {
 
 		$fak_date = $_POST["fak_date"];
@@ -40,20 +42,6 @@ if (isset($_POST["btnsubmit"])) {
 		}
 	}
 
-	if ($_POST['mem_name']) {
-		$row_num = $_POST[row_num];
-
-			$result= mysqli_query($link,"SELECT * FROM member WHERE mem_name LIKE ' ".strtoupper($_POST['mem_id'])."%'");
-			$date = array();
-			while ($row = mysqli_fetch_assoc($result)){
-				$name = $row[''].'|'.$row[''].'|'.$row_num;
-			}
-			echo json_encode($date);
-
-			// $result = ($link, $sql);
-			// while ($row=mysqli_fetch_array($result)){
-
-	}
 ?>
 
 
@@ -112,7 +100,7 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ฝาก</label>
                                 <div class="col-md-3">
-                                <input id="mem_name" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+                                <input id="user_memname" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
                                 </div>
                                 <!-- Message body -->
 																<div class="form-group">
@@ -179,21 +167,17 @@ require_once('deposit.php');
 require_once('include/_footer.php');
 ?>
 <!-- begining of page level js -->
-<script src = "asset/vendors/datatables/css/jquery-ui.css" rel = "stylesheet"></script>
-<script src = "asset/vendors/datatables/css/jquery-1.10.2.js"></script>
-<script src = "asset/vendors/datatables/css/jquery-ui.js"></script>
-<script src = "asset/vendors/datatables/css/select2.css" rel="stylesheet" type="text/css"></script>
-<script src = "asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
-<script src = "asset/css/pages/tables.css" rel="stylesheet" type="text/css" ></script>
+<script src="asset/vendors/jasny-bootstrap/js/jasny-bootstrap.js"></script>
 <!-- end of page level js -->
 </body>
 </html>
 <script type="text/javascript">
-	$('#mem_name').autocomplete({
+	$('#user_memname').autocomplete({
 		source: function( request, response){
 			$.ajax({
-				url : 'ajax.pjp',
+				url : 'ajax.php',
 				dataType: "json",
+				method:  'post,'
 				data: {
 					name_startsWith : request.term,
 					type : 'fund',
@@ -215,8 +199,8 @@ require_once('include/_footer.php');
 		minlength 0,
 		select: function (event, ui){
 			var names = ui.item.data.spit("|");
-			#('#mem_name').va;(names[1]);
-			#('#mem_id').va;(names[2]);
+			#('#mem_id').va;(names[1]);
+			#('#fak_total').va;(names[2]);
 		}
 	});
 </script>
@@ -247,4 +231,6 @@ require_once('include/_footer.php');
 	// 		$("#fak_total_new").val(parseFloat($(this).val()) + parseFloat($("#fak_total").val()));
 	// 	});
 	// });
+
 </script>
+<script src="asset/js/auto.js"></script>
