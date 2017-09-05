@@ -12,8 +12,18 @@ $css = <<<EOT
 EOT;
 require_once('include/_header.php');
 ?>
-<script type="text/javascript"  src="asset/js/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="asset/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <?php
 if (isset($_POST["btnsubmit"])) {
@@ -81,76 +91,74 @@ if (isset($_POST["btnsubmit"])) {
 											</h3>
 										</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="admin_deposit_add.php" method="post" name="fak" id="fak" method="post">
-                            <fieldset>
-                                <!-- Name input-->
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="birth">วันที่ฝาก</label>
-																<div class="col-md-3">
-																<input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
-																</div>
+											<form class="form-horizontal" action="admin_deposit_add.php" method="post" name="fak" id="fak" >
+											    <fieldset>
+											        <!-- Name input-->
 
-                                <div class="form-group">
-                                <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
-                                <div class="col-md-3">
-                                <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
-                                </div>
-                                <!-- Email input-->
-                                <div class="form-group">
-                                <label class="col-md-3 control-label" for="name">ชื่อผู้ฝาก</label>
-                                <div class="col-md-3">
-                                <input id="user_memname" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
-                                </div>
-                                <!-- Message body -->
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="detail">ชื่อผู้รับฝาก</label>
-																<div class="col-md-3">
-																<select class="form-control" name="id_commit" id="id_commit">
-																				<option>--เลือก--</option>
-																				<?php
-																					$sql="SELECT * FROM commits";
-																					$result = mysqli_query($link, $sql);
-																					while ($row=mysqli_fetch_array($result)){
-																				?>
-																				<option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
-																				<?php
-																					}
-																				?>
-																				</select>
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="birth">วันที่ฝาก</label>
+											        <div class="col-md-3">
+											        <input type="date" id="datepicker" name="fak_date" class="form-control round-form"  placeholder="DATE"></div>
+											        </div>
 
-																			</div>
-																		</div>
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
+											        <div class="col-md-3">
+											        <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly></div>
+											        </div>
+											        <!-- Email input-->
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="name">ชื่อผู้ฝาก</label>
+											        <div class="col-md-3">
+											        <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control"></div>
+											        </div>
+											        <!-- Message body -->
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="detail">ชื่อผู้รับฝาก</label>
+											        <div class="col-md-3">
+											        <select class="form-control" name="id_commit" id="id_commit">
+											                <option>--เลือก--</option>
+											                <?php
+											                  $sql="SELECT * FROM commits";
+											                  $result = mysqli_query($link, $sql);
+											                  while ($row=mysqli_fetch_array($result)){
+											                ?>
+											                <option value="<?=$row['id_commit']?>"> <?=$row['name_commit']?></option>
+											                <?php
+											                  }
+											                ?>
+											                </select>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">จำนวนเงินฝาก</label>
-																<div class="col-md-3">
-																<input id="fak" name="fak_sum" type="text" placeholder="RECIVER" class="form-control"></div>
-																</div>
+											              </div>
+											            </div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">ยอดยกมา</label>
-																<div class="col-md-3">
-																<input id="fak_total" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly value="100"></div>
-																</div>
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="pass">จำนวนเงินฝาก</label>
+											        <div class="col-md-3">
+											        <input id="num1" name="fak_sum" type="text" placeholder="RECIVER" class="form-control"></div>
+											        </div>
 
-																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">รวมเป็นเงิน</label>
-																<div class="col-md-3">
-																<input id="fak_total_new" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly value=""></div>
-																</div>
-																                      <!-- Form actions -->
-                                <div class="form-group">
-                                    <div class="col-md-12 text-right">
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="pass">ยอดยกมา</label>
+											        <div class="col-md-3">
+											        <input id="num2" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly value=""></div>
+											        </div>
 
-                                         <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ฝาก</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
+											        <div class="form-group">
+											        <label class="col-md-3 control-label" for="pass">รวมเป็นเงิน</label>
+											        <div class="col-md-3">
+											        <input id="sum" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly value=""></div>
+											        </div>
+											                              <!-- Form actions -->
+											        <div class="form-group">
+											            <div class="col-md-12 text-right">
 
-
-
+											                 <button type="submit" name="btnsubmit" value="send" class="btn btn-primary">ฝาก</button>
+											            </div>
+											        </div>
+											    </fieldset>
+											</form>
                     </div>
                 </div>
 
@@ -172,65 +180,44 @@ require_once('include/_footer.php');
 </body>
 </html>
 <script type="text/javascript">
-	$('#user_memname').autocomplete({
-		source: function( request, response){
+	$('#countryname_1').autocomplete({
+		source: function( request, response ) {
 			$.ajax({
 				url : 'ajax.php',
 				dataType: "json",
-				method:  'post,'
-				data: {
-					name_startsWith : request.term,
-					type : 'fund',
-					row_num : 1
-				},
-				success: function(data){
-					response( $.map(data, function ( item ){
-						var code = item.spit("|");
+				method: 'post',
+			data: {
+				 name_startsWith: request.term,
+				 type: 'country_table',
+				 row_num : 1
+			},
+			success: function( data ) {
+				response( $.map( data, function( item ) {
+					var code = item.split("|");
 						return {
 							label: code[0],
 							value: code[0],
 							data : item
 						}
-					}));
-				}
+				}));
+			}
 			});
 		},
 		autoFocus: true,
-		minlength 0,
-		select: function (event, ui){
-			var names = ui.item.data.spit("|");
-			#('#mem_id').va;(names[1]);
-			#('#fak_total').va;(names[2]);
-		}
+		minLength: 0,
+		select: function( event, ui ) {
+		var names = ui.item.data.split("|");
+		$('#user_id_mem').val(names[1]);
+		$('#num2').val(names[2]);
+	}
 	});
-</script>
-<script type="text/javascript">
-	// $(function(){
-	//  var availableTags = [
-	//     <?php
-	//
-	//     $sql = "SELECT mem_name FROM member ORDER BY mem_name ASC";
-	// 		$result = mysqli_query($link, $sql);
-	// 		$name = '';
-	// 		while($row = mysqli_fetch_array($result)){
-	// 			$name .=  '"' . $row['mem_name'] . '",' ;
-	// 		}
-	//
-	// 		echo $name;
-	//       ?>
-	//     ];
-	//
-	//     $("#mem_name").autocomplete({
-	//       source: availableTags
-	//     });
-	//
-	//     $("span[role='status']").remove();
-	//
-	//
-	// 	$("#fak").keyup(function(){
-	// 		$("#fak_total_new").val(parseFloat($(this).val()) + parseFloat($("#fak_total").val()));
-	// 	});
-	// });
 
 </script>
-<script src="asset/js/auto.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("#num1, #num2").on("keydown keyup", sum);
+	function sum() {
+	$("#sum").val(Number($("#num2").val()) + Number($("#num1").val()));
+	}
+});
+</script>

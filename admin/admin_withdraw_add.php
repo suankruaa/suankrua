@@ -10,7 +10,21 @@ $css = <<<EOT
 <!--end of page level css--><!--end of page level css-->
 EOT;
 require_once('include/_header.php');
+?>
+<link rel="stylesheet" type="text/css" href="asset/css/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="css/main.css" /> -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="asset/js/jquery-ui.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<?php
 if (isset($_POST["btnsubmit"])) {
 		$fak_date = $_POST["fak_date"];
 		$mem_id = $_POST["mem_id"];
@@ -27,7 +41,7 @@ if (isset($_POST["btnsubmit"])) {
 		if ($result) {
 			echo "<script type='text/javascript'>";
 			echo "alert('เพิมเสร็จแล้ว');";
-			echo "window.location='admin_deposit_add.php';";
+			echo "window.location='admin_withdraw_add.php';";
 			echo "</script>";
 			//header('location: admin_product.php');
 		}else{
@@ -87,13 +101,13 @@ if (isset($_POST["btnsubmit"])) {
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="id">รหัสสมาชิก</label>
                                 <div class="col-md-3">
-                                <input id="mem_id" name="mem_id" type="text" placeholder="MEM-ID" class="form-control"></div>
+                                <input id="user_id_mem" name="mem_id" type="text" placeholder="MEM-ID" class="form-control" readonly ></div>
                                 </div>
                                 <!-- Email input-->
                                 <div class="form-group">
                                 <label class="col-md-3 control-label" for="name">ชื่อผู้ถอน</label>
                                 <div class="col-md-3">
-                                <input id="mem_name" name="mem_name" type="text" placeholder="NAME" class="form-control" readonly></div>
+                                <input id="countryname_1" name="mem_name" type="text" placeholder="NAME" class="form-control" ></div>
                                 </div>
                                 <!-- Message body -->
 																<div class="form-group">
@@ -118,19 +132,19 @@ if (isset($_POST["btnsubmit"])) {
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">จำนวนเงินที่ต้องการถอน</label>
 																<div class="col-md-3">
-																<input id="fak_sum" name="withdraw" type="text" placeholder="RECIVER" class="form-control"></div>
+																<input id="num1" name="withdraw" type="text" placeholder="RECIVER" class="form-control"></div>
 																</div>
 
 																<div class="form-group">
-																<label class="col-md-3 control-label" for="pass">รวมเงินฝากครั้งล่าสุด</label>
+																<label class="col-md-3 control-label" for="pass">ยอดยกมา</label>
 																<div class="col-md-3">
-																<input id="fak_total" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly></div>
+																<input id="num2" name="fak_total" type="text" placeholder="MONEY" class="form-control" readonly></div>
 																</div>
 
 																<div class="form-group">
 																<label class="col-md-3 control-label" for="pass">ยอดคงเหลือ</label>
 																<div class="col-md-3">
-																<input id="fak_total" name="fak_total" type="text" placeholder="TOTAL" class="form-control"></div>
+																<input id="sum" name="fak_total" type="text" placeholder="TOTAL" class="form-control" readonly></div>
 																</div>
 																                      <!-- Form actions -->
                                 <div class="form-group">
@@ -141,9 +155,6 @@ if (isset($_POST["btnsubmit"])) {
                                 </div>
                             </fieldset>
                         </form>
-
-
-
                     </div>
                 </div>
 
@@ -164,3 +175,45 @@ require_once('include/_footer.php');
 <!-- end of page level js -->
 </body>
 </html>
+<script type="text/javascript">
+	$('#countryname_1').autocomplete({
+		source: function( request, response ) {
+			$.ajax({
+				url : 'ajax.php',
+				dataType: "json",
+				method: 'post',
+			data: {
+				 name_startsWith: request.term,
+				 type: 'country_table',
+				 row_num : 1
+			},
+			success: function( data ) {
+				response( $.map( data, function( item ) {
+					var code = item.split("|");
+						return {
+							label: code[0],
+							value: code[0],
+							data : item
+						}
+				}));
+			}
+			});
+		},
+		autoFocus: true,
+		minLength: 0,
+		select: function( event, ui ) {
+		var names = ui.item.data.split("|");
+		$('#user_id_mem').val(names[1]);
+		$('#num2').val(names[2]);
+	}
+	});
+
+</script>
+<script type="text/javascript">
+$(function() {
+    $("#num1, #num2").on("keydown keyup", sum);
+	function sum() {
+	$("#sum").val(Number($("#num2").val()) - Number($("#num1").val()));
+	}
+});
+</script>
